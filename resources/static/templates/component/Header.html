@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <!--타임리프 사용-->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,6 +19,9 @@
     </style>
   </head>
   <body>
+    <div th:fragment="header">
+      <!-- 넣을 위치 위면 header 밑이면 footer -->
+
     <div class="w-[1440px] h-20 relative overflow-hidden bg-white">
       <p class="absolute left-5 top-[17px] text-3xl font-bold text-left uppercase text-black">
         여기 어때
@@ -40,5 +44,6 @@
         </p>
       </div>
     </div>
+  </div>
   </body>
 </html>

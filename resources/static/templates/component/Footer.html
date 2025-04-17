@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Preview</title>
+    <title>Footer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       html, body {
@@ -14,6 +14,9 @@
     </style>
   </head>
   <body>
+    <div th:fragment="footer">
+      <!-- 넣을 위치 위면 header 밑이면 footer -->
+      <div class="w-full h-20 bg-white"></div>
     <div class="w-full bg-neutral-50">
       <!-- 고객센터 섹션 -->
       <div class="w-full max-w-[1440px] mx-auto py-8 border-b border-neutral-100">
@@ -21,7 +24,7 @@
           <!-- 고객센터 -->
           <div>
             <p class="text-lg font-bold text-[#707070]">고객센터</p>
-            <p class="text-sm font-semibold text-[#999] mt-2">오전 9시 - 오후 6시 운영</p>
+            <p class="text-sm font-semibold text-[#999] mt-2" th:text="${customerServiceTime}">오전 9시 - 오후 6시 운영</p>
             <div class="flex items-center gap-4 mt-4">
               <div class="flex items-center justify-center w-[142px] h-12 bg-white border-2 border-[#ebebeb] rounded-[10px]">
                 <svg
@@ -37,7 +40,7 @@
                     fill="#C2C2C2"
                   ></path>
                 </svg>
-                <p class="text-[15px] font-semibold text-[#333] ml-2">1234-5678</p>
+                <p class="text-[15px] font-semibold text-[#333] ml-2" th:text="${customerServicePhone}">1234-5678</p>
               </div>
               <div class="flex items-center justify-center w-[142px] h-12 bg-white border-2 border-[#ebebeb] rounded-[10px]">
                 <svg
@@ -53,7 +56,7 @@
                     fill="#C2C2C2"
                   ></path>
                 </svg>
-                <p class="text-[15px] font-semibold text-[#333] ml-2">카카오 문의</p>
+                <p class="text-[15px] font-semibold text-[#333] ml-2" th:text="${customerServiceKakao}">카카오 문의</p>
               </div>
             </div>
           </div>
@@ -62,9 +65,9 @@
           <div>
             <p class="text-lg font-bold text-[#707070]">회사</p>
             <ul class="mt-2 space-y-2">
-              <li class="text-sm font-semibold text-[#999]">회사소개</li>
-              <li class="text-sm font-semibold text-[#999]">인재채용</li>
-              <li class="text-sm font-semibold text-[#999]">광고제휴문의</li>
+              <li class="text-sm font-semibold text-[#999]" th:each="item : ${companyInfo}" th:text="${item}">회사소개</li>
+              <li class="text-sm font-semibold text-[#999]" th:text="'인재채용'">인재채용</li>
+              <li class="text-sm font-semibold text-[#999]" th:text="'광고제휴문의'">광고제휴문의</li>
             </ul>
           </div>
 
@@ -72,11 +75,11 @@
           <div>
             <p class="text-lg font-bold text-[#707070]">서비스</p>
             <ul class="mt-2 space-y-2">
-              <li class="text-sm font-semibold text-[#999]">스포츠</li>
-              <li class="text-sm font-semibold text-[#999]">배달</li>
-              <li class="text-sm font-semibold text-[#999]">공구</li>
-              <li class="text-sm font-semibold text-[#999]">게임</li>
-              <li class="text-sm font-semibold text-[#999]">OTT</li>
+              <li class="text-sm font-semibold text-[#999]" th:each="service : ${services}" th:text="${service}">스포츠</li>
+              <li class="text-sm font-semibold text-[#999]" th:if="${services.contains('배달')}" th:text="'배달'">배달</li>
+              <li class="text-sm font-semibold text-[#999]" th:if="${services.contains('공구')}" th:text="'공구'">공구</li>
+              <li class="text-sm font-semibold text-[#999]" th:if="${services.contains('게임')}" th:text="'게임'">게임</li>
+              <li class="text-sm font-semibold text-[#999]" th:if="${services.contains('OTT')}" th:text="'OTT'">OTT</li>
             </ul>
           </div>
 
@@ -84,8 +87,8 @@
           <div>
             <p class="text-lg font-bold text-[#707070]">문의사항</p>
             <ul class="mt-2 space-y-2">
-              <li class="text-sm font-semibold text-[#999]">자주묻는질문</li>
-              <li class="text-sm font-semibold text-[#999]">공지사항</li>
+              <li class="text-sm font-semibold text-[#999]" th:each="faq : ${faqs}" th:text="${faq}">자주묻는질문</li>
+              <li class="text-sm font-semibold text-[#999]" th:text="'공지사항'">공지사항</li>
             </ul>
           </div>
         </div>
@@ -93,16 +96,16 @@
 
       <!-- 하단 정보 -->
       <div class="w-full max-w-[1440px] mx-auto py-4 text-center text-[#999] text-xs">
-        <p>(주)test | 주소 : 강원특별자치도 춘천시 효자동 192-1 | 대표이사 : 김철수 | 사업자등록번호 : 123-45-67890</p>
-        <p>전자우편주소 : test@naver.com | 전화번호 : 1234-5678 | 호스팅서비스제공자의 상호 표시 : (주)test</p>
-        <p>(주)test는 통신판매중개자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.</p>
+        <p th:text="${footerInfo1}">(주)test | 주소 : 강원특별자치도 춘천시 효자동 192-1 | 대표이사 : 김철수 | 사업자등록번호 : 123-45-67890</p>
+        <p th:text="${footerInfo2}">전자우편주소 : test@naver.com | 전화번호 : 1234-5678 | 호스팅서비스제공자의 상호 표시 : (주)test</p>
+        <p th:text="${footerInfo3}">(주)test는 통신판매중개자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.</p>
         <div class="flex justify-center items-center gap-4 mt-4">
-          <a href="#" class="text-sm font-semibold text-[#999]">이용약관</a>
-          <a href="#" class="text-sm font-semibold text-[#333]">개인정보처리방침</a>
-          <a href="#" class="text-sm font-semibold text-[#999]">소비자 분쟁해결 기준</a>
-          <a href="#" class="text-sm font-semibold text-[#999]">콘텐츠산업진흥법에 의한 표시</a>
+          <a href="#" class="text-sm font-semibold text-[#999]" th:href="${termsLink}">이용약관</a>
+          <a href="#" class="text-sm font-semibold text-[#333]" th:href="${privacyPolicyLink}">개인정보처리방침</a>
+          <a href="#" class="text-sm font-semibold text-[#999]" th:href="${consumerPolicyLink}">소비자 분쟁해결 기준</a>
+          <a href="#" class="text-sm font-semibold text-[#999]" th:href="${contentPolicyLink}">콘텐츠산업진흥법에 의한 표시</a>
         </div>
-        <p class="mt-4">Copyright GC COMPANY Corp. All rights reserved.</p>
+        <p class="mt-4" th:text="${copyright}">Copyright GC COMPANY Corp. All rights reserved.</p>
       </div>
     </div>
   </body>
