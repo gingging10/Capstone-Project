@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/members") // ✅ 변경된 경로
+@RequestMapping("/api/members") // 변경된 경로
 @RequiredArgsConstructor
 public class MemberController {
 
