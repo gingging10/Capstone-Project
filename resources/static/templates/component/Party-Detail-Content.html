@@ -39,37 +39,45 @@
 
       <!-- 파티 정보 -->
 <section class="bg-gray-100 rounded-lg shadow-md p-6 w-full max-w-4xl mt-6">
-    <div class="grid grid-cols-2 gap-6 sm:grid-cols-1">
-      <!-- 서비스명 -->
-      <div class="flex flex-col">
-        <p class="text-gray-700 font-medium">서비스명:</p>
-        <p class="text-gray-900 font-bold" th:text="${serviceName}">
-          넷플릭스
-        </p>
-      </div>
-      <!-- 이용 기간 -->
-      <div class="flex flex-col">
-        <p class="text-gray-700 font-medium">이용 기간:</p>
-        <p class="text-gray-900 font-bold" th:text="${usagePeriod}">
-          YYYY/MM/DD
-        </p>
-      </div>
-      <!-- 참여 비용 -->
-      <div class="flex flex-col">
-        <p class="text-gray-700 font-medium">참여 비용:</p>
-        <p class="text-gray-900 font-bold" th:text="${cost}">
-          9,000원
-        </p>
-      </div>
-      <!-- 종료일 -->
-      <div class="flex flex-col">
-        <p class="text-gray-700 font-medium">종료일:</p>
-        <p class="text-gray-900 font-bold" th:text="${endDate}">
-          YYYY/MM/DD
-        </p>
-      </div>
+  <div class="grid grid-cols-2 gap-6 sm:grid-cols-1">
+    <!-- 서비스명 -->
+    <div class="flex flex-col">
+      <p class="text-gray-700 font-medium">서비스명:</p>
+      <p class="text-gray-900 font-bold" th:text="${serviceName}">
+        넷플릭스
+      </p>
     </div>
-  </section>
+    <!-- 이용 기간 -->
+    <div class="flex flex-col">
+      <p class="text-gray-700 font-medium">이용 기간:</p>
+      <p class="text-gray-900 font-bold" th:text="${usagePeriod}">
+        YYYY/MM/DD
+      </p>
+    </div>
+    <!-- 참여 비용 -->
+    <div class="flex flex-col">
+      <p class="text-gray-700 font-medium">참여 비용:</p>
+      <p class="text-gray-900 font-bold" th:text="${cost}">
+        9,000원
+      </p>
+    </div>
+    <!-- 종료일 -->
+    <div class="flex flex-col">
+      <p class="text-gray-700 font-medium">종료일:</p>
+      <p class="text-gray-900 font-bold" th:text="${endDate}">
+        YYYY/MM/DD
+      </p>
+    </div>
+    <!-- 모집 인원 -->
+    <div class="flex flex-col">
+      <p class="text-gray-700 font-medium">모집 인원:</p>
+      <p class="text-gray-900 font-bold">
+        <span th:text="${currentMembers}">3</span> / 
+        <span th:text="${maxMembers}">4</span> 명
+      </p>
+    </div>
+  </div>
+</section>
 
       <!-- 상세 설명 -->
       <section class="bg-white rounded-lg shadow-md p-6 w-full max-w-4xl mt-6">
@@ -82,16 +90,26 @@
         </p>
       </section>
 
-      <!-- 참여하기 버튼 -->
-      <div class="mt-6">
-        <button
-          class="px-6 py-3 bg-blue-500 text-white text-lg font-medium rounded-lg hover:bg-blue-600 transition"
-          th:onclick="|location.href='@{/party/join}'|"
-          aria-label="파티 참여하기"
-        >
-          참여하기
-        </button>
-      </div>
+            <!-- 참여하기 및 뒤로가기 버튼 -->
+            <div class="mt-6 flex gap-4 justify-center">      
+              <!-- 뒤로가기 버튼 -->
+              <button
+                class="px-6 py-3 bg-gray-300 text-gray-700 text-lg font-medium rounded-lg hover:bg-gray-400 transition"
+                th:onclick="|location.href='@{/index}'|"
+                aria-label="뒤로가기"
+              >
+                뒤로가기
+              </button>
+
+              <!-- 참여하기 버튼 -->
+              <button
+                class="px-6 py-3 bg-blue-500 text-white text-lg font-medium rounded-lg hover:bg-blue-600 transition"
+                th:onclick="|location.href='@{/Join-Question}'|"
+                aria-label="파티 참여하기"
+              >
+                참여하기
+              </button>
+            </div>
     </main>
   </body>
 </html>
