@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,21 +19,25 @@
     </style>
   </head>
   <body>
-    <div class="flex flex-col justify-start items-start w-[240px] h-full bg-gray-100 p-4">
+    <div th:fragment="navi-bar" class="flex flex-col justify-start items-start w-[240px] h-full bg-gray-50 border-r border-gray-200 shadow-md p-6">
       <!-- 타이틀 -->
       <div class="mb-8">
-        <p class="text-2xl font-semibold text-center text-[#1a1c35]">전체 관리</p>
+        <p class="text-2xl font-bold text-center text-gray-800">전체 관리</p>
       </div>
+
       <!-- 메뉴 항목 -->
-      <div class="space-y-4">
-        <div class="flex items-center gap-4 cursor-pointer">
+      <div class="space-y-6">
+        <!-- 회원정보 -->
+        <a href="#" th:href="@{/member-info}" class="flex items-center gap-4 p-3 rounded-lg hover:bg-blue-100 transition">
           <img src="/resources/static/image/Mem-info.png" alt="회원정보" class="w-6 h-6" />
-          <p class="text-lg text-[#6a6ba1]">회원정보</p>
-        </div>
-        <div class="flex items-center gap-4 cursor-pointer">
+          <p class="text-lg font-medium text-gray-700 hover:text-blue-500">회원정보</p>
+        </a>
+
+        <!-- 전체파티방 -->
+        <a href="#" th:href="@{/party-list}" class="flex items-center gap-4 p-3 rounded-lg hover:bg-blue-100 transition">
           <img src="/resources/static/image/Whole-party.png" alt="전체파티방" class="w-6 h-6" />
-          <p class="text-lg text-[#6a6ba1]">전체파티방</p>
-        </div>
+          <p class="text-lg font-medium text-gray-700 hover:text-blue-500">전체파티방</p>
+        </a>
       </div>
     </div>
   </body>

@@ -1,53 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Preview</title>
+    <title>Mypage</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       html,
       body {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        width: 100%;
         height: 100%;
+        margin: 0;
+        overflow: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
     </style>
   </head>
-  <body>
-    <div class="w-full h-full bg-white">
-      <!-- 헤더 -->
-      <div class="w-full h-20 bg-white shadow-md flex items-center px-5">
-        <p class="text-3xl font-bold uppercase text-black">여기 어때</p>
-        <div class="flex gap-10 ml-auto">
-          <p class="text-base uppercase text-gray-800 cursor-pointer">스포츠</p>
-          <p class="text-base uppercase text-gray-800 cursor-pointer">배달</p>
-          <p class="text-base uppercase text-gray-800 cursor-pointer">공구</p>
-          <p class="text-base uppercase text-gray-800 cursor-pointer">게임</p>
-          <p class="text-base uppercase text-gray-800 cursor-pointer">OTT</p>
-        </div>
-        <div class="ml-5">
-          <button class="w-28 h-10 border border-black rounded-full text-black uppercase">
-            로그인
-          </button>
-        </div>
-      </div>
+  <body class="bg-gray-50">
+    <!-- 헤더 -->
+    <div th:replace="~{component/Header :: header}"></div>
 
-      <!-- 왼쪽 사이드바 -->
-      <div class="flex">
-        <div class="w-72 bg-gray-100 border-r border-gray-300">
-          <div class="py-5 px-5 border-b border-gray-300">
-            <p class="text-xl text-black">참여중인 파티</p>
-          </div>
-          <div class="py-5 px-5">
-            <p class="text-xl text-black">내 정보 관리</p>
-          </div>
-        </div>
+    <!-- 사이드바 -->
+    <div th:replace="~{component/My-menu :: my-menu}"></div>
 
+    <!-- 주 내용 -->
+    <div class="flex flex-col items-center justify-center min-h-screen px-4 py-8">
+      <div class="w-full max-w-6xl bg-white rounded-lg shadow-md flex">
         <!-- 메인 -->
         <div class="flex-1 p-10">
           <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
@@ -110,5 +88,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Footer -->
+    <div th:replace="~{component/Footer :: footer}"></div>
   </body>
 </html>

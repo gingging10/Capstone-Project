@@ -1,136 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login_Page</title>
+    <title>Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      html, body {
+      html,
+      body {
         height: 100%;
         margin: 0;
         overflow: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
     </style>
   </head>
-  <body>
-    <div
-      class="flex flex-col justify-start items-center w-[1440px] h-[1024px] relative overflow-hidden gap-[180px] py-1 bg-[#e5adad]/[0.33]"
-    >
-      <!-- 헤더 -->
-      <div class="w-[1440px] h-20 relative overflow-hidden bg-white">
-        <p class="absolute left-5 top-[17px] text-3xl font-bold text-left uppercase text-black">
-          여기 어때
-        </p>
-        <div
-          class="flex justify-start items-center absolute left-[392px] top-[27.5px] gap-[121px] rounded-xl"
-        >
-          <p class="flex-grow-0 flex-shrink-0 text-base text-left uppercase text-[#333]">스포츠</p>
-          <p class="flex-grow-0 flex-shrink-0 text-base text-left uppercase text-[#333]">배달</p>
-          <p class="flex-grow-0 flex-shrink-0 text-base text-left uppercase text-[#333]">공구</p>
-          <p class="flex-grow-0 flex-shrink-0 text-base text-left uppercase text-[#333]">게임</p>
-          <p class="flex-grow-0 flex-shrink-0 text-base text-left uppercase text-[#333]">OTT</p>
-        </div>
-        <div class="w-[110px] h-10">
-          <div
-            class="w-[110px] h-10 absolute left-[1309.5px] top-[16.5px] rounded-[50px] border border-black"
-          ></div>
-          <p class="absolute left-[1342px] top-[25px] text-base text-left uppercase text-black">
-            로그인
-          </p>
-        </div>
-      </div>
+  <body class="bg-gray-50">
+    <!-- 헤더 -->
+    <div th:replace="~{component/Header :: header}"></div>
 
-      <!-- 업체명 -->
-      <div
-        class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-2.5 px-2.5 py-8"
-      >
-        <p class="text-[40px] font-bold uppercase text-black">여기 어때</p>
-      </div>
+    <!-- 사이드바 -->
+    <div th:replace="~{component/My-menu :: my-menu}"></div>
 
-      <!-- 로그인 버튼 -->
-      <div
-        class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 gap-8"
-      >
-        <!-- 카카오 로그인 -->
-        <div class="w-[400px] h-[60px] flex items-center justify-center relative rounded-2xl bg-[#fee500]">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="absolute left-4"
-          >
-            <path
-              d="M12 3C17.8 3 22.501 6.664 22.501 11.185C22.501 15.705 17.8 19.369 12.001 19.369C11.4236 19.368 10.8469 19.3312 10.274 19.259L5.86601 22.142C5.36501 22.407 5.18801 22.378 5.39401 21.729L6.28601 18.051C3.40601 16.591 1.50101 14.061 1.50101 11.185C1.50101 6.665 6.20101 3 12.001 3Z"
-              fill="black"
-            ></path>
-          </svg>
-          <p class="text-[15px] uppercase text-black">카카오 계정으로 로그인 하기</p>
-        </div>
+    <!-- 주 내용 -->
+    <div class="flex flex-col items-center justify-center min-h-screen px-4 py-8">
+      <div class="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">로그인</h1>
 
-        <!-- 네이버 로그인 -->
-        <div class="w-[400px] h-[60px] flex items-center justify-center relative rounded-2xl bg-[#1ec800]">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="absolute left-4"
-          >
-            <path
-              d="M16.273 12.845L7.376 0H0V24H7.726V11.156L16.624 24H24V0H16.273V12.845Z"
-              fill="white"
-            ></path>
-          </svg>
-          <p class="text-[15px] uppercase text-white">네이버 계정으로 로그인 하기</p>
-        </div>
+        <!-- 로그인 버튼 -->
+        <div class="space-y-6">
+          <!-- 카카오 로그인 -->
+          <button class="w-full h-12 flex items-center justify-center gap-4 rounded-lg bg-[#fee500] hover:bg-[#fdd835] transition">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 3C17.8 3 22.501 6.664 22.501 11.185C22.501 15.705 17.8 19.369 12.001 19.369C11.4236 19.368 10.8469 19.3312 10.274 19.259L5.86601 22.142C5.36501 22.407 5.18801 22.378 5.39401 21.729L6.28601 18.051C3.40601 16.591 1.50101 14.061 1.50101 11.185C1.50101 6.665 6.20101 3 12.001 3Z"
+                fill="black"
+              ></path>
+            </svg>
+            <p class="text-[15px] font-medium text-black">카카오 계정으로 로그인</p>
+          </button>
 
-        <!-- 구글 로그인 -->
-        <div class="w-[400px] h-[60px] flex items-center justify-center relative rounded-2xl bg-white border border-[#ddd]">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="absolute left-4"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M21.35 11.1H12V13.9H17.85C17.55 15.1 16.85 16.1 15.85 16.8V18.9H18.35C19.95 17.5 21.35 15.4 21.35 11.1Z"
-              fill="#EA4335"
-            ></path>
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M12 21C14.7 21 16.95 20.1 18.35 18.9L15.85 16.8C15.05 17.3 13.95 17.6 12 17.6C9.45 17.6 7.3 15.9 6.55 13.6H3.95V15.8C5.35 18.5 8.45 21 12 21Z"
-              fill="#34A853"
-            ></path>
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M6.55 13.6C6.35 13.1 6.2 12.6 6.2 12C6.2 11.4 6.35 10.9 6.55 10.4V8.2H3.95C3.35 9.4 3 10.6 3 12C3 13.4 3.35 14.6 3.95 15.8L6.55 13.6Z"
-              fill="#FBBC05"
-            ></path>
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M12 6.4C13.2 6.4 14.3 6.8 15.1 7.6L17.95 4.7C16.95 3.7 14.7 3 12 3C8.45 3 5.35 5.5 3.95 8.2L6.55 10.4C7.3 8.1 9.45 6.4 12 6.4Z"
-              fill="#EA4335"
-            ></path>
-          </svg>
-          <p class="text-[15px] uppercase text-[#555]">구글 계정으로 로그인 하기</p>
-        </div>
+          <!-- 네이버 로그인 -->
+          <button class="w-full h-12 flex items-center justify-center gap-4 rounded-lg bg-[#1ec800] hover:bg-[#17b000] transition">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.273 12.845L7.376 0H0V24H7.726V11.156L16.624 24H24V0H16.273V12.845Z"
+                fill="white"
+              ></path>
+            </svg>
+            <p class="text-[15px] font-medium text-white">네이버 계정으로 로그인</p>
+          </button>
 
-        <!-- 매니저 로그인 -->
-        <div class="w-[300px] h-[50px] flex items-center justify-center relative rounded-2xl bg-[#333]">
-          <p class="text-[14px] uppercase text-white">매니저 계정으로 로그인 하기</p>
+          <!-- 구글 로그인 -->
+          <button class="w-full h-12 flex items-center justify-center gap-4 rounded-lg bg-white border border-gray-300 hover:bg-gray-100 transition">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M21.35 11.1H12V13.9H17.85C17.55 15.1 16.85 16.1 15.85 16.8V18.9H18.35C19.95 17.5 21.35 15.4 21.35 11.1Z"
+                fill="#EA4335"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 21C14.7 21 16.95 20.1 18.35 18.9L15.85 16.8C15.05 17.3 13.95 17.6 12 17.6C9.45 17.6 7.3 15.9 6.55 13.6H3.95V15.8C5.35 18.5 8.45 21 12 21Z"
+                fill="#34A853"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M6.55 13.6C6.35 13.1 6.2 12.6 6.2 12C6.2 11.4 6.35 10.9 6.55 10.4V8.2H3.95C3.35 9.4 3 10.6 3 12C3 13.4 3.35 14.6 3.95 15.8L6.55 13.6Z"
+                fill="#FBBC05"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 6.4C13.2 6.4 14.3 6.8 15.1 7.6L17.95 4.7C16.95 3.7 14.7 3 12 3C8.45 3 5.35 5.5 3.95 8.2L6.55 10.4C7.3 8.1 9.45 6.4 12 6.4Z"
+                fill="#EA4335"
+              ></path>
+            </svg>
+            <p class="text-[15px] font-medium text-gray-700">구글 계정으로 로그인</p>
+          </button>
+
+          <!-- 매니저 로그인 -->
+          <button class="w-40 h-12 flex items-center justify-center gap-4 rounded-lg bg-gray-800 hover:bg-gray-700 transition mx-auto">
+            <p class="text-[14px] font-medium text-white">매니저 로그인</p>
+          </button>
         </div>
       </div>
     </div>
+
+    <!-- Footer -->
+    <div th:replace="~{component/Footer :: footer}"></div>
   </body>
 </html>
