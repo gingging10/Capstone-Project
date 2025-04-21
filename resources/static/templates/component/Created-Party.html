@@ -1,0 +1,69 @@
+<!-- 파티 생성 완료 때 사용하는 컴포넌트-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Created Party</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 flex items-center justify-center min-h-screen">
+    <div
+      th:fragment="created-party"
+      class="flex flex-col justify-start items-start w-[400px] gap-4 p-6 rounded-lg bg-white shadow-lg"
+    >
+      <!-- 파티명 -->
+      <div class="flex justify-between w-full">
+        <p class="text-lg font-medium text-gray-700">파티명:</p>
+        <p class="text-lg font-medium text-gray-900" th:text="${partyName}">이성준</p>
+      </div>
+
+      <!-- 모집 인원 -->
+      <div class="flex justify-between w-full">
+        <p class="text-lg font-medium text-gray-700">모집 인원:</p>
+        <p class="text-lg font-medium text-gray-900" th:text="${recruitmentCount}">0명</p>
+      </div>
+
+      <!-- 모집 기간 -->
+      <div class="flex justify-between w-full">
+        <p class="text-lg font-medium text-gray-700">모집 기간:</p>
+        <p class="text-lg font-medium text-gray-900" th:text="${recruitmentPeriod}">25년 4월 16일</p>
+      </div>
+
+      <!-- 메뉴 -->
+      <div class="flex justify-between w-full">
+        <p class="text-lg font-medium text-gray-700">메뉴:</p>
+        <p class="text-lg font-medium text-gray-900" th:text="${menu}">교촌 치킨 허니 콤보</p>
+      </div>
+
+      <!-- 인당 가격 -->
+      <div class="flex justify-between w-full">
+        <p class="text-lg font-medium text-gray-700">인당 가격:</p>
+        <p class="text-lg font-medium text-gray-900" th:text="${price}">가격</p>
+      </div>
+
+      <!-- 오픈 채팅 -->
+      <div class="flex justify-between w-full">
+        <p class="text-lg font-medium text-gray-700">오픈 채팅:</p>
+        <a
+          class="text-lg font-medium text-blue-500 hover:underline"
+          th:href="${openChatLink}"
+          >링크</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

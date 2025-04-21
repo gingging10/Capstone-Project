@@ -40,8 +40,16 @@
             </button>
           </div>
 
-          <!-- 스포츠 제목 -->
-          <p class="text-3xl font-bold text-gray-800 mb-6">스포츠</p>
+          <!-- 스포츠 제목과 파티만들기 버튼 -->
+          <div class="flex justify-between items-center mb-6">
+            <p class="text-3xl font-bold text-gray-800">스포츠</p>
+            <button
+              class="px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-600 transition"
+              th:onclick="|location.href='@{/party/create}'|"
+            >
+              파티만들기
+            </button>
+          </div>
 
           <!-- 카드 -->
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">

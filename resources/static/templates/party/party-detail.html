@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Party Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- 헤더 -->
+    <div th:replace="~{component/Header :: header}"></div>
+
+    <!-- My-menu -->
+    <div th:replace="~{component/My-menu :: my-menu}"></div>
+
+    <!-- 메인 콘텐츠 -->
+    <div th:replace="~{component/Party-Detail-Content :: content}"></div>
+
+    <!-- 풋터 -->
+    <div th:replace="~{component/Footer :: footer}"></div>
+  </body>
+</html>
