@@ -35,22 +35,33 @@
 - **경로**: `resources/static/templates/component/Party-Create-Card.html`
 - **설명**: 새로운 파티를 생성할 때 사용되는 카드 컴포넌트입니다.
 - **주요 기능**:
-  - 파티 생성 버튼 제공.
-  - 파티 생성 관련 입력 필드 표시.
+  - 파티 생성 완료 시 관련 제공.
+  - 파티 관련 (파티명, 모집인원, 모집 기간, 메뉴, 참여 비용, 오픈채팅방 링크) 제공.
 - **연결 방법**:
   ```html
   <div th:replace="~{component/Party-Create-Card :: party-create-card}"></div>
+- **데이터 전달 시 주의**:
+  - 동적으로 렌더링되는 변수:
+    partyName, recruitmentCount, recruitmentPeriod, menu, price, openChatLink.
+  - 동적으로 설정된 경로:
+    th:href="${openChatLink}"는 오픈 채팅 링크로 이동.
 
 
 ### 5. **`Party-Detail-Cotent`**
 - **경로**: `resources/static/templates/component/Party-Detail-Content.html`
 - **설명**: 특정 파티의 상세 정보를 표시하는 컴포넌트입니다.
 - **주요 기능**:
-  - 파티 이름, 참여 인원, 날짜 등의 상세 정보 표시.
+  - 파티 이름,서비스명, 참여 비용, 날짜 등의 상세 정보 표시.
   - 참여 및 나가기 버튼 제공.
 - **연결 방법**:
   ```html
   <div th:replace="~{component/Party-Detail-Content :: party-detail-content}"></div>
+- **데이터 전달 시 주의**: 등등
+  - 동적으로 렌더링되는 변수
+    partyTitle, partySubtitle, serviceName, usagePeriod, cost, endDate, currentMembers, maxMembers, description
+  - 동적으로 설정된 경로:
+    /Join-Question (참여하기 버튼-107번 라인)
+    /index (뒤로가기 버튼-98번 라인)
 
 
 ### 6. **`Party-Join-Card`**
@@ -61,5 +72,10 @@
 - **연결 방법**:
   ```html
   <div th:replace="~{component/Party-Join-Card :: party-join-card}"></div>
+- **데이터 전달 시 주의**:
+  - 동적으로 렌더링되는 변수:
+    serviceName, period, openChatLink, userList.
+  - 동적으로 설정된 경로:
+    th:href="${openChatLink}": 오픈 채팅 링크로 이동.
 
 ---
