@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CreateSports</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        overflow: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Header -->
+    <div th:replace="~{component/Header :: header}"></div>
+
+    <!-- Main Content -->
+    <div class="flex flex-col items-center justify-center min-h-screen px-4 py-8">
+      <div class="w-full max-w-lg bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-3xl font-bold text-center uppercase text-black mb-6">스포츠 파티 만들기</h1>
+
+        <!-- Form -->
+        <form class="space-y-4">
+          <!-- 종목 -->
+          <div class="flex flex-col">
+            <label for="sport" class="text-lg font-medium text-black">종목 :</label>
+            <input
+              id="sport"
+              type="text"
+              class="w-full h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="스포츠 종목 입력"
+            />
+          </div>
+
+          <!-- 모집 인원 -->
+          <div class="flex flex-col">
+            <label for="recruitment" class="text-lg font-medium text-black">모집 인원 :</label>
+            <input
+              id="recruitment"
+              type="number"
+              class="w-full h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="모집 인원 입력"
+            />
+          </div>
+
+          <!-- 모집 기간 -->
+          <div class="flex flex-col">
+            <label for="recruitment-period" class="text-lg font-medium text-black">모집 기간 :</label>
+            <input
+              id="recruitment-period"
+              type="date"
+              class="w-full h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <!-- 날짜 -->
+          <div class="flex flex-col">
+            <label for="date" class="text-lg font-medium text-black">날짜 :</label>
+            <input
+              id="date"
+              type="date"
+              class="w-full h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <!-- 파티 제목 -->
+          <div class="flex flex-col">
+            <label for="party-title" class="text-lg font-medium text-black">파티 제목 :</label>
+            <input
+              id="party-title"
+              type="text"
+              class="w-full h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="파티 제목 입력"
+            />
+          </div>
+
+          <!-- 오픈 채팅 -->
+          <div class="flex flex-col">
+            <label for="open-chat" class="text-lg font-medium text-black">오픈 채팅 :</label>
+            <input
+              id="open-chat"
+              type="text"
+              class="w-full h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="오픈 채팅 링크 입력"
+            />
+          </div>
+
+          <!-- Submit Button -->
+          <div class="flex justify-center">
+            <button
+              type="submit"
+              class="w-full h-12 bg-blue-500 text-white font-medium text-lg rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              파티 만들기
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="~{component/Footer :: footer}"></div>
+  </body>
+</html>
