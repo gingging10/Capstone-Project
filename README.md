@@ -56,7 +56,7 @@
 - **연결 방법**:
   ```html
   <div th:replace="~{component/Party-Detail-Content :: party-detail-content}"></div>
-- **데이터 전달 시 주의**: 등등
+- **데이터 전달 시 주의**:
   - 동적으로 렌더링되는 변수
     partyTitle, partySubtitle, serviceName, usagePeriod, cost, endDate, currentMembers, maxMembers, description
   - 동적으로 설정된 경로:
