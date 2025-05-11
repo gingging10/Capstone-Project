@@ -77,16 +77,16 @@
         if (!userCode) {
       resultMessage.textContent = "인증번호를 입력해주세요.";
       resultMessage.className = "text-red-500 text-xl font-bold mb-4";
+      closeModal("email-modal");
+      openModal("result-modal");
     } else if (userCode === correctCode) {
-      resultMessage.textContent = "인증 성공!";
-      resultMessage.className = "text-green-500 text-xl font-bold mb-4";
+      window.location.href = "verify-department-succes.html";
     } else {
       resultMessage.textContent = "인증 실패. 다시 시도하세요.";
       resultMessage.className = "text-red-500 text-xl font-bold mb-4";
+      closeModal("email-modal");
+      openModal("result-modal");
     }
-
-        closeModal("email-modal");
-        openModal("result-modal");
       }
 
       function openModal(modalId) {
