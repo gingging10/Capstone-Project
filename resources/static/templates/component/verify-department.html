@@ -17,7 +17,6 @@
     </style>
   </head>
   <body class="bg-gray-50">
-
     <!-- 이메일 인증 모달 -->
     <div
       id="email-modal"
@@ -25,9 +24,7 @@
     >
       <div class="bg-white rounded-lg shadow-lg w-11/22 max-w-md p-6">
         <h2 class="text-xl font-bold text-gray-800 mb-4">이메일 인증</h2>
-        <p class="text-gray-600 mb-4">
-          이메일로 발송된 인증번호를 입력하세요.
-        </p>
+        <p class="text-gray-600 mb-4">이메일로 발송된 인증번호를 입력하세요.</p>
         <input
           id="verification-code"
           type="text"
@@ -60,7 +57,7 @@
         <h2 id="result-message" class="text-xl font-bold mb-4"></h2>
         <button
           class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
-          onclick="closeModal('result-modal')"
+          onclick="retryVerification()"
         >
           닫기
         </button>
@@ -71,22 +68,24 @@
       const correctCode = "123456"; // 인증번호 예시
 
       function verifyCode() {
-        const userCode = document.getElementById("verification-code").value.trim();
+        const userCode = document
+          .getElementById("verification-code")
+          .value.trim();
         const resultMessage = document.getElementById("result-message");
 
         if (!userCode) {
-      resultMessage.textContent = "인증번호를 입력해주세요.";
-      resultMessage.className = "text-red-500 text-xl font-bold mb-4";
-      closeModal("email-modal");
-      openModal("result-modal");
-    } else if (userCode === correctCode) {
-      window.location.href = "verify-department-succes.html";
-    } else {
-      resultMessage.textContent = "인증 실패. 다시 시도하세요.";
-      resultMessage.className = "text-red-500 text-xl font-bold mb-4";
-      closeModal("email-modal");
-      openModal("result-modal");
-    }
+          resultMessage.textContent = "인증번호를 입력해주세요.";
+          resultMessage.className = "text-red-500 text-xl font-bold mb-4";
+          closeModal("email-modal");
+          openModal("result-modal");
+        } else if (userCode === correctCode) {
+          window.location.href = "verify-department-succes.html";
+        } else {
+          resultMessage.textContent = "인증 실패. 다시 시도하세요.";
+          resultMessage.className = "text-red-500 text-xl font-bold mb-4";
+          closeModal("email-modal");
+          openModal("result-modal");
+        }
       }
 
       function openModal(modalId) {
@@ -95,6 +94,11 @@
 
       function closeModal(modalId) {
         document.getElementById(modalId).classList.add("hidden");
+      }
+      function retryVerification() {
+        closeModal("result-modal"); // 결과창 닫기
+        openModal("email-modal"); // 인증창 다시 열기
+        document.getElementById("verification-code").value = ""; // 입력값 초기화
       }
     </script>
   </body>
