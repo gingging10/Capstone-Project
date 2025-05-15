@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mainpage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body class="overflow-auto">
+    <!-- Header -->
+    <div th:replace="~{component/Header :: header}"></div>
+    <!--추가1 먼저 넣어서 채우기~{불러올 폴더/파일이름 :: header} .html은 하지말기 -->
+    
+    <!-- 배너 -->
+    <div class="w-[1100px] h-[140px] mx-auto mt-8 bg-black flex items-center justify-center">
+      <p class="text-4xl text-white uppercase">배너 ~.~</p>
+    </div>
+
+    <!-- 메인 콘텐츠 -->
+    <div class="w-[1440px] h-auto relative overflow-hidden bg-white mx-auto mt-8">
+      <div class="w-[1100px] mx-auto">
+        <!-- 메인 페이지 화살표 -->
+        <div class="relative w-full bg-white rounded-lg p-6 border border-black">
+          <!-- 왼쪽 화살표 -->
+          <div class="absolute left-[-50px] top-1/2 transform -translate-y-1/2">
+            <button>
+              <img src="/resources/static/image/left-arrow.png" alt="Left Arrow" class="w-8 h-8 cursor-pointer" />
+            </button>
+          </div>
+
+          <!-- 스포츠 제목 -->
+          <p class="text-5xl text-left uppercase text-black mb-8">스포츠</p>
+
+          <!-- 카드 -->
+          <div class="grid grid-cols-4 gap-6">
+            <!-- 카드 1 -->
+            <div class="w-[220px] h-[140px] bg-[#e4e4e4] border border-neutral-100 p-3">
+              <p class="text-xl font-bold uppercase text-black">축구</p>
+              <p class="text-[10px] font-light uppercase text-black">모집 기간 : 2025년 3월 30일 24시</p>
+              <p class="text-[10px] font-light uppercase text-black">날짜 : 2025년 3월 31일 15시</p>
+              <p class="text-sm uppercase text-black">축구합시다</p>
+              <p class="text-[25px] uppercase text-black">1/22명</p>
+            </div>
+
+            <!-- 카드 2 -->
+            <div class="w-[220px] h-[140px] bg-[#e4e4e4] border border-neutral-100 p-3">
+              <p class="text-xl font-bold uppercase text-black">농구</p>
+              <p class="text-[10px] font-light uppercase text-black">모집 기간 : 2025년 4월 1일 24시</p>
+              <p class="text-[10px] font-light uppercase text-black">날짜 : 2025년 4월 2일 15시</p>
+              <p class="text-sm uppercase text-black">농구합시다</p>
+              <p class="text-[25px] uppercase text-black">3/10명</p>
+            </div>
+
+            <!-- 카드 3 -->
+            <div class="w-[220px] h-[140px] bg-[#e4e4e4] border border-neutral-100 p-3">
+              <p class="text-xl font-bold uppercase text-black">배구</p>
+              <p class="text-[10px] font-light uppercase text-black">모집 기간 : 2025년 4월 5일 24시</p>
+              <p class="text-[10px] font-light uppercase text-black">날짜 : 2025년 4월 6일 15시</p>
+              <p class="text-sm uppercase text-black">배구합시다</p>
+              <p class="text-[25px] uppercase text-black">5/12명</p>
+            </div>
+
+            <!-- 카드 4 -->
+            <div class="w-[220px] h-[140px] bg-[#e4e4e4] border border-neutral-100 p-3">
+              <p class="text-xl font-bold uppercase text-black">야구</p>
+              <p class="text-[10px] font-light uppercase text-black">모집 기간 : 2025년 4월 10일 24시</p>
+              <p class="text-[10px] font-light uppercase text-black">날짜 : 2025년 4월 11일 15시</p>
+              <p class="text-sm uppercase text-black">야구합시다</p>
+              <p class="text-[25px] uppercase text-black">2/18명</p>
+            </div>
+
+            <!-- 카드 5 -->
+            <div class="w-[220px] h-[140px] bg-[#e4e4e4] border border-neutral-100 p-3">
+              <p class="text-xl font-bold uppercase text-black">탁구</p>
+              <p class="text-[10px] font-light uppercase text-black">모집 기간 : 2025년 4월 15일 24시</p>
+              <p class="text-[10px] font-light uppercase text-black">날짜 : 2025년 4월 16일 15시</p>
+              <p class="text-sm uppercase text-black">탁구합시다</p>
+              <p class="text-[25px] uppercase text-black">4/8명</p>
+            </div>
+
+            <!-- 카드 6 -->
+            <div class="w-[220px] h-[140px] bg-[#e4e4e4] border border-neutral-100 p-3">
+              <p class="text-xl font-bold uppercase text-black">테니스</p>
+              <p class="text-[10px] font-light uppercase text-black">모집 기간 : 2025년 4월 20일 24시</p>
+              <p class="text-[10px] font-light uppercase text-black">날짜 : 2025년 4월 21일 15시</p>
+              <p class="text-sm uppercase text-black">테니스합시다</p>
+              <p class="text-[25px] uppercase text-black">1/4명</p>
+            </div>
+
+            <!-- 카드 7 -->
+            <div class="w-[220px] h-[140px] bg-[#e4e4e4] border border-neutral-100 p-3">
+              <p class="text-xl font-bold uppercase text-black">골프</p>
+              <p class="text-[10px] font-light uppercase text-black">모집 기간 : 2025년 4월 25일 24시</p>
+              <p class="text-[10px] font-light uppercase text-black">날짜 : 2025년 4월 26일 15시</p>
+              <p class="text-sm uppercase text-black">골프합시다</p>
+              <p class="text-[25px] uppercase text-black">2/6명</p>
+            </div>
+
+            <!-- 카드 8 -->
+            <div class="w-[220px] h-[140px] bg-[#e4e4e4] border border-neutral-100 p-3">
+              <p class="text-xl font-bold uppercase text-black">수영</p>
+              <p class="text-[10px] font-light uppercase text-black">모집 기간 : 2025년 4월 30일 24시</p>
+              <p class="text-[10px] font-light uppercase text-black">날짜 : 2025년 5월 1일 15시</p>
+              <p class="text-sm uppercase text-black">수영합시다</p>
+              <p class="text-[25px] uppercase text-black">3/10명</p>
+            </div>
+          </div>
+
+          <!-- 오른쪽 화살표 -->
+          <div class="absolute right-[-50px] top-1/2 transform -translate-y-1/2">
+            <button>
+              <img src="/resources/static/image/right-arrow.png" alt="Right Arrow" class="w-8 h-8 cursor-pointer" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="~{component/Footer :: footer}"></div>
+  </body>
+</html>

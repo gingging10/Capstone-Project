@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./vars.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.tailwindcss.com/3.2.0"></script>
+  <script src="./tailwind.config.js"></script>
+  <style>
+    a, button, input, select, h1, h2, h3, h4, h5, * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: none;
+      text-decoration: none;
+      background: none;
+      -webkit-font-smoothing: antialiased;
+    }
+    menu, ol, ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="bg-[#ffffff] h-[1024px] relative overflow-hidden">
+    <div class="bg-[#f5f6fb] rounded-tl-[80px] rounded-bl-[80px] pt-[30px] pr-[150px] pb-[30px] pl-5 flex flex-col gap-5 items-start justify-start w-[1260px] h-[1024px] absolute left-[180px] top-[-9px] overflow-hidden">
+      <div class="text-[#000000] text-center font-['Inter-SemiBold',_sans-serif] text-2xl font-semibold relative w-[202px] h-10 flex items-center justify-center">
+        전체파티방
+      </div>
+
+      <!-- ✅ 폼 시작 -->
+      <form th:action="@{/api/admin/deleteParties}" method="post" class="w-full">
+        <div class="bg-[#eaecf8] rounded-[30px] p-5 flex flex-col gap-2.5 items-start justify-start self-stretch shrink-0 relative overflow-hidden">
+          <div class="p-2.5 flex flex-col gap-2.5 items-start justify-start self-stretch shrink-0 relative overflow-hidden">
+
+            <!-- ✅ 회색 헤더 -->
+            <div class="bg-[#e1e1e1] rounded-[10px] px-[30px] py-2.5 flex flex-row gap-[40px] items-center justify-start w-full h-[61px]">
+              <div class="w-[40px] shrink-0 flex items-center justify-start">
+                <input type="checkbox" />
+              </div>
+              <div class="text-sm font-semibold text-[#000000] truncate w-[100px]">제목</div>
+              <div class="text-sm font-semibold text-[#000000] truncate w-[250px]">내용</div>
+              <div class="text-sm font-semibold text-[#000000] truncate w-[100px]">분야</div>
+              <div class="text-sm font-semibold text-[#000000] truncate w-[100px]">마감일</div>
+              <div class="text-sm font-semibold text-[#000000] truncate w-[80px]">회원수</div>
+              <div class="text-sm font-semibold text-[#000000] truncate w-[250px]">오픈주소창</div>
+            </div>
+
+            <!-- ✅ 리스트 반복 -->
+            <div th:each="party : ${partyList}" 
+                class="bg-[#ffffff] rounded-[10px] px-[30px] py-2.5 flex flex-row gap-[40px] items-center justify-start w-full h-[41px]">
+              
+              <div class="w-[40px] shrink-0 flex items-center justify-start">
+                <input type="checkbox" name="selectedParties" th:value="${party[0]}" />
+              </div>
+              <div class="text-sm font-semibold text-[#000000] truncate w-[100px]" th:text="${party[1]}">제목</div>
+              <div class="text-sm font-semibold text-[#000000] truncate w-[250px]" th:text="${party[2]}">내용</div>
+              <div class="text-sm font-semibold text-[#000000] truncate w-[100px]" th:text="${party[3]}">분야</div>
+              <div class="text-sm font-semibold text-[#000000] truncate w-[100px]" th:text="${party[4]}">마감일</div>
+              <div class="text-sm font-semibold text-[#000000] truncate w-[80px]" th:text="${party[5]}">회원수</div>
+              <div class="text-sm font-semibold text-[#000000] truncate w-[250px]" th:text="${party[6]}">오픈주소</div>
+            </div>
+
+          </div>
+
+          <!-- ✅ 삭제 버튼 -->
+          <div class="rounded-[10px] px-[30px] py-2.5 flex flex-row gap-2.5 items-center justify-start w-full h-[41px]">
+            <button type="submit"
+              class="bg-red-300 px-3 py-1.5 text-base font-normal rounded truncate whitespace-nowrap overflow-hidden">
+              삭제
+            </button>
+          </div>
+        </div>
+      </form>
+      <!-- ✅ 폼 끝 -->
+
+    </div>
+
+    <!-- ✅ 왼쪽 사이드바 -->
+    <div class="pt-[18px] pb-[18px] flex flex-col items-start justify-start h-[1024px] absolute left-0 top-0 overflow-hidden">
+      <div class="flex flex-col items-center justify-center w-full h-[50px]">
+        <div class="text-[#1a1c35] text-[22px] font-semibold w-[180px] text-center">전체 관리</div>
+      </div>
+      <div class="pr-2.5 flex flex-row gap-2.5 items-center justify-center w-[180px] h-[45px]">
+        <img class="w-5 h-5" style="object-fit: cover" src="logo0.png" />
+        <div class="text-[#6a6ba1] text-lg w-[90px] text-center">회원정보</div>
+      </div>
+      <div class="pr-2.5 flex flex-row gap-2.5 items-center justify-center w-[180px] h-[45px]">
+        <img class="w-5 h-5" style="object-fit: cover" src="logo1.png" />
+        <div class="text-[#6a6ba1] text-lg w-[90px] text-center">전체파티방</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
