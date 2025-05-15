@@ -32,4 +32,10 @@ public class MemberController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<MemberResponseDto> updateMember(@PathVariable("id") String id, @RequestBody SignUpRequestDto dto) {
+        Member updated = memberService.updateMember(id, dto);
+        return ResponseEntity.ok(new MemberResponseDto(updated));
+    }
 }

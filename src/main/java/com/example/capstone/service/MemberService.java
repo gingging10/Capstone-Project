@@ -26,4 +26,18 @@ public class MemberService {
 
         return memberRepository.save(member);
     }
+
+    public Member updateMember(String id, SignUpRequestDto dto) { //회원정보 수정
+        Member member = memberRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 ID의 회원이 존재하지 않습니다."));
+
+        member.setName(dto.getName());
+        member.setSchoolCode(dto.getSchoolCode());
+        member.setSchoolDepartment(dto.getSchoolDepartment());
+        member.setPhoneNum(dto.getPhoneNum());
+        member.setEmail(dto.getEmail());
+
+        return memberRepository.save(member);
+
+    }
 }
