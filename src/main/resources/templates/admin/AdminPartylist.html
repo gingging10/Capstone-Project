@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src='https://cdn.tailwindcss.com/3.2.0' ></script>
+  <script src="./tailwind.config.js"></script>
+  <style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+   </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="bg-[#ffffff] h-[1024px] relative overflow-hidden">
+    <div
+      class="bg-[#f5f6fb] rounded-tl-[80px] rounded-bl-[80px] pt-[30px] pr-[150px] pb-[30px] pl-5 flex flex-col gap-5 items-start justify-start w-[1260px] h-[1024px] absolute left-[180px] top-[-9px] overflow-hidden"
+    >
+      <div
+        class="text-[#000000] text-center font-['Inter-SemiBold',_sans-serif] text-2xl font-semibold relative w-[202px] h-10 flex items-center justify-center"
+      >
+        전체파티방
+      </div>
+      <div
+        class="bg-[#eaecf8] rounded-[30px] p-5 flex flex-col gap-2.5 items-start justify-start self-stretch shrink-0 relative overflow-hidden"
+      >
+        <div
+          class="p-2.5 flex flex-col gap-2.5 items-start justify-start self-stretch shrink-0 h-[601px] relative overflow-hidden"
+        >
+          <div
+            class="bg-[#e1e1e1] rounded-[10px] pt-2.5 pr-[30px] pb-2.5 pl-[30px] flex flex-row gap-[100px] items-center justify-start self-stretch shrink-0 h-[61px] relative overflow-hidden"
+          >
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              체크박스
+            </div>
+            <div
+              class="text-[#000000] text-center font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative w-[26px] flex items-center justify-center"
+            >
+              제목
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              내용
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              분야
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              등록일
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              회원수
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              오픈주소창
+            </div>
+          </div>
+          <div
+            class="bg-[#ffffff] rounded-[10px] pt-2.5 pr-[30px] pb-2.5 pl-[30px] flex flex-row gap-[100px] items-center justify-start self-stretch shrink-0 h-[41px] relative overflow-hidden"
+          >
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              체크박스
+            </div>
+            <div
+              class="text-[#000000] text-center font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative w-[26px] h-[21px] flex items-center justify-center"
+            >
+              제목
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              내용
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              분야
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              등록일
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              회원수
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              오픈주소창
+            </div>
+          </div>
+          <div
+            class="bg-[#ffffff] rounded-[10px] pt-2.5 pr-[30px] pb-2.5 pl-[30px] flex flex-row gap-[100px] items-center justify-start self-stretch shrink-0 h-[41px] relative overflow-hidden"
+          >
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              체크박스
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              제목
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              내용
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              분야
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              등록일
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              회원수
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              오픈주소창
+            </div>
+          </div>
+          <div
+            class="bg-[#ffffff] rounded-[10px] pt-2.5 pr-[30px] pb-2.5 pl-[30px] flex flex-row gap-[100px] items-center justify-start self-stretch shrink-0 h-[41px] relative overflow-hidden"
+          >
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              체크박스
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              제목
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              내용
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              분야
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              등록일
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              회원수
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              오픈주소창
+            </div>
+          </div>
+          <div
+            class="bg-[#ffffff] rounded-[10px] pt-2.5 pr-[30px] pb-2.5 pl-[30px] flex flex-row gap-[100px] items-center justify-start self-stretch shrink-0 h-[41px] relative overflow-hidden"
+          >
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              체크박스
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              제목
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              내용
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              분야
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              등록일
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              회원수
+            </div>
+            <div
+              class="text-[#000000] text-left font-['WorkSans-SemiBold',_sans-serif] text-sm leading-normal font-semibold relative flex items-center justify-start"
+            >
+              오픈주소창
+            </div>
+          </div>
+        </div>
+        <div
+          class="rounded-[10px] pt-2.5 pr-[30px] pb-2.5 pl-[30px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[41px] relative overflow-hidden"
+        >
+          <div
+            class="flex flex-col gap-0 items-start justify-start shrink-0 w-0 h-9 relative"
+          >
+            <div
+              class="rounded border-solid border-global-06-info border pt-1.5 pr-3 pb-1.5 pl-3 flex flex-col gap-0 items-center justify-center shrink-0 relative"
+            >
+              <div
+                class="flex flex-row gap-1 items-center justify-center shrink-0 relative"
+              >
+                <div
+                  class="text-global-06-info text-center font-['ABeeZee-Regular',_sans-serif] text-base leading-6 font-normal relative flex items-center justify-center"
+                >
+                  삭제
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="pt-[18px] pb-[18px] flex flex-col gap-0 items-start justify-start h-[1024px] absolute left-0 top-0 overflow-hidden"
+    >
+      <div
+        class="flex flex-col gap-2.5 items-center justify-center self-stretch shrink-0 h-[50px] relative overflow-hidden"
+      >
+        <div
+          class="text-[#1a1c35] text-center font-['Inter-SemiBold',_sans-serif] text-[22px] font-semibold relative flex-1 w-[180px] flex items-center justify-center"
+        >
+          전체 관리
+        </div>
+      </div>
+      <div
+        class="pr-2.5 flex flex-row gap-2.5 items-center justify-center shrink-0 w-[180px] h-[45px] relative"
+      >
+        <img
+          class="shrink-0 w-5 h-5 relative overflow-hidden"
+          style="object-fit: cover"
+          src="logo0.png"
+        />
+        <div
+          class="text-[#6a6ba1] text-center font-['Inter-Regular',_sans-serif] text-lg font-normal relative w-[90px] h-[45px] flex items-center justify-center"
+        >
+          회원정보
+        </div>
+      </div>
+      <div
+        class="pr-2.5 flex flex-row gap-2.5 items-center justify-center shrink-0 w-[180px] h-[45px] relative"
+      >
+        <img
+          class="shrink-0 w-5 h-5 relative overflow-hidden"
+          style="object-fit: cover"
+          src="logo1.png"
+        />
+        <div
+          class="text-[#6a6ba1] text-center font-['Inter-Regular',_sans-serif] text-lg font-normal relative w-[90px] h-[45px] flex items-center justify-center"
+        >
+          전체파티방
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>
