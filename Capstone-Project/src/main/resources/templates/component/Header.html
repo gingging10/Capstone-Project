@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <!--타임리프 사용-->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,31 +18,33 @@
     </style>
   </head>
   <body>
-    <div th:fragment="header">
-      <!-- 넣을 위치 위면 header 밑이면 footer -->
+    <div th:fragment="header" class="w-full bg-white shadow-md">
+      <!-- 헤더 내용 -->
+      <div class="max-w-[1440px] mx-auto flex items-center justify-between h-16 px-6">
+        <!-- 로고 -->
+        <div class="flex items-center">
+          <p class="text-2xl font-bold text-black uppercase">나랑 어때</p>
+        </div>
 
-    <div class="w-[1440px] h-20 relative overflow-hidden bg-white">
-      <p class="absolute left-5 top-[17px] text-3xl font-bold text-left uppercase text-black">
-        여기 어때
-      </p>
-      <div
-        class="flex justify-start items-center absolute left-[392px] top-[27.5px] gap-[121px] rounded-xl"
-      >
-        <p class="flex-grow-0 flex-shrink-0 text-base text-left uppercase text-[#333]">스포츠</p>
-        <p class="flex-grow-0 flex-shrink-0 text-base text-left uppercase text-[#333]">배달</p>
-        <p class="flex-grow-0 flex-shrink-0 text-base text-left uppercase text-[#333]">공구</p>
-        <p class="flex-grow-0 flex-shrink-0 text-base text-left uppercase text-[#333]">게임</p>
-        <p class="flex-grow-0 flex-shrink-0 text-base text-left uppercase text-[#333]">OTT</p>
-      </div>
-      <div class="w-[110px] h-10">
-        <div
-          class="w-[110px] h-10 absolute left-[1309.5px] top-[16.5px] rounded-[50px] border border-black"
-        ></div>
-        <p class="absolute left-[1342px] top-[25px] text-base text-left uppercase text-black">
-          로그인
-        </p>
+        <!-- 서비스 목록 -->
+        <nav class="hidden md:flex gap-20">
+          <a href="#" class="text-base text-gray-700 hover:text-blue-500 transition">스포츠</a>
+          <a href="#" class="text-base text-gray-700 hover:text-blue-500 transition">배달</a>
+          <a href="#" class="text-base text-gray-700 hover:text-blue-500 transition">공구</a>
+          <a href="#" class="text-base text-gray-700 hover:text-blue-500 transition">게임</a>
+          <a href="#" class="text-base text-gray-700 hover:text-blue-500 transition">OTT</a>
+        </nav>
+
+        <!-- 로그인 버튼 -->
+        <div>
+          <a
+            href="#"
+            class="px-4 py-2 border border-gray-700 text-gray-700 rounded-full hover:bg-gray-700 hover:text-white transition"
+          >
+            로그인
+          </a>
+        </div>
       </div>
     </div>
-  </div>
   </body>
 </html>

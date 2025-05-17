@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Menu</title>
+    <title>My_Menu</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       html, body {
@@ -18,14 +18,37 @@
     </style>
   </head>
   <body>
-    <div class="w-72 bg-gray-100 border-r border-gray-300">
-      <!-- 참여중인 파티 -->
-      <div class="py-5 px-5 border-b border-gray-300">
-        <p class="text-xl text-black">참여중인 파티</p>
+    <div th:fragment="my-menu" class="w-72 bg-gray-50 border-r border-gray-200 shadow-md">
+      <!-- 메뉴 헤더 -->
+      <div class="py-6 px-5 bg-blue-500 text-white">
+        <h2 class="text-2xl font-bold">My Menu</h2>
       </div>
-      <!-- 내 정보 관리 -->
-      <div class="py-5 px-5">
-        <p class="text-xl text-black">내 정보 관리</p>
+
+      <!-- 메뉴 항목 -->
+      <div class="py-4">
+        <!-- 참여중인 파티 -->
+        <a
+          href="#"
+          class="block py-3 px-5 text-lg text-gray-700 hover:bg-blue-100 hover:text-blue-500 rounded-lg transition"
+        >
+          참여중인 파티
+        </a>
+
+        <!-- 내 정보 관리 -->
+        <a
+          href="#"
+          class="block py-3 px-5 text-lg text-gray-700 hover:bg-blue-100 hover:text-blue-500 rounded-lg transition"
+        >
+          마이페이지
+        </a>
+
+        <!-- 로그아웃 -->
+        <a
+          href="#"
+          class="block py-3 px-5 text-lg text-gray-700 hover:bg-red-100 hover:text-red-500 rounded-lg transition"
+        >
+          로그아웃
+        </a>
       </div>
     </div>
   </body>

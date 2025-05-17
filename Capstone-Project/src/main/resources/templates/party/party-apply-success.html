@@ -1,0 +1,65 @@
+<!-- 파티 신청 완료 홈페이지-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Party Apply Success</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- 헤더 -->
+    <div th:replace="~{component/Header :: header}"></div>
+
+    <!-- 사이드바 -->
+    <div th:replace="~{component/My-menu :: my-menu}"></div>
+
+    <!-- 메인 콘텐츠 -->
+    <div class="flex flex-col items-center justify-center min-h-screen px-4">
+      <!-- 성공 메시지 -->
+      <div class="bg-white rounded-xl shadow-xl p-8 w-full max-w-lg text-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-20 w-20 mx-auto text-green-500"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M12 22a10 10 0 100-20 10 10 0 000 20zm5.707-13.707a1 1 0 00-1.414-1.414L10 13.586 7.707 11.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l6-6z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <h1 class="text-3xl font-bold text-gray-800 mt-6">신청 완료!</h1>
+        <p class="text-gray-600 mt-4">파티 신청이 성공적으로 완료되었습니다.</p>
+      </div>
+
+      <!-- 파티 정보 -->
+      <div class="bg-gray-100 rounded-xl shadow-lg p-6 w-full max-w-lg mt-8">
+        <div th:replace="~{component/party-join-card :: party-join-card}"></div>
+      </div>
+
+      <!-- 홈으로 버튼 -->
+      <div class="mt-8">
+        <button
+          class="px-8 py-3 bg-blue-500 text-white text-lg font-medium rounded-lg hover:bg-blue-600 transition"
+          th:onclick="|location.href='@{/}'|"
+        >
+          홈으로
+        </button>
+      </div>
+    </div>
+
+    <!-- 푸터 -->
+    <div th:replace="~{component/Footer :: footer}"></div>
+  </body>
+</html>

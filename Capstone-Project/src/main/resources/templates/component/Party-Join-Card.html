@@ -1,0 +1,66 @@
+<!-- 파티 신청 때 사용하는 컴포넌트-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Party_Join</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 flex items-center justify-center min-h-screen">
+    <div
+      th:fragment="party-join-card"
+      class="flex flex-col justify-start items-start w-[360px] relative overflow-hidden gap-4 px-6 py-6 rounded-xl bg-white shadow-lg"
+    >
+      <!-- 서비스명 -->
+      <div class="flex items-center gap-4">
+        <p class="text-sm font-medium text-gray-700">서비스명:</p>
+        <p class="text-sm font-medium text-gray-900" th:text="${serviceName}">넷플릭스</p>
+      </div>
+
+      <!-- 기간 -->
+      <div class="flex items-center gap-4">
+        <p class="text-sm font-medium text-gray-700">기간:</p>
+        <p class="text-sm font-medium text-gray-900" th:text="${period}">YYYY/MM/DD</p>
+      </div>
+
+      <!-- 오픈채팅방 -->
+      <div class="flex items-center gap-4">
+        <p class="text-sm font-medium text-gray-700">오픈채팅방:</p>
+        <a
+          href="#"
+          class="text-sm font-medium text-blue-500 hover:underline"
+          th:href="${openChatLink}"
+        >
+          www.naver.com
+        </a>
+      </div>
+
+        <!-- 이용자 목록 -->
+        <div>
+            <p class="text-sm font-medium text-gray-700 mb-2">이용자 목록:</p>
+            <ul class="list-disc list-inside text-sm text-gray-900">
+                <li th:each="user : ${userList}" th:text="${user}">이성준</li>
+                <li>박미리</li>
+                <li>김철수</li>
+                <li>홍길동</li>
+                <li>이영희</li>
+                <li>최민수</li>
+            </ul>
+        </div>
+    </div>
+  </body>
+</html>
