@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/api/admin")  // 경로 통일
@@ -75,16 +74,21 @@ public class AdminController {
 
     // 관리자 메인 페이지
     @GetMapping("/Admin")
-    public String adminMainPage(HttpSession session, Model model) {
+    public String adminMainPage(HttpSession session) {
         if (session.getAttribute("adminId") == null) {
             return "redirect:/api/admin/unauthorized";
         }
-
-        Map<String, Integer> percents = adminService.getMemberStatusPercents();
-        model.addAttribute("percentStats", percents);  // HTML에서 이걸 씀
         return "admin/Admin";
     }
 
+    // 파티 리스트 페이지
+    @GetMapping("/AdminPartylist")
+    public String adminPartyPage(HttpSession session) {
+        if (session.getAttribute("adminId") == null) {
+            return "redirect:/api/admin/unauthorized";
+        }
+        return "admin/AdminPartylist";
+    }
 
     // 사용자 리스트 페이지
     @GetMapping("/AdminUserlist")
@@ -131,41 +135,5 @@ public class AdminController {
 
         return "redirect:/api/admin/AdminUserlist";
     }
-
-    @GetMapping("/AdminPartylist")
-    public String adminPartyListPage(Model model, HttpSession session) {
-        if (session.getAttribute("adminId") == null) {
-            return "redirect:/api/admin/unauthorized";
-        }
-
-        List<Object[]> result = adminService.getAdminPartyList();
-
-        model.addAttribute("partyList", result);
-        System.out.println("[파티 목록 조회] " + result.size() + "개 조회됨");
-
-        return "admin/AdminPartylist";
-    }
-
-    @PostMapping("/deleteParties")
-    public String deleteParties(@RequestParam("selectedParties") List<Long> partyIds,
-                                HttpSession session,
-                                RedirectAttributes redirectAttributes) {
-
-        if (session.getAttribute("adminId") == null) {
-            return "redirect:/api/admin/unauthorized";
-        }
-
-        if (partyIds == null || partyIds.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "선택된 파티가 없습니다.");
-            return "redirect:/api/admin/AdminPartylist";
-        }
-
-        adminService.deleteParties(partyIds);
-        redirectAttributes.addFlashAttribute("message", "선택된 파티가 삭제되었습니다.");
-
-        return "redirect:/api/admin/AdminPartylist";
-    }
-
-
 
 }

@@ -8,7 +8,6 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -19,18 +18,4 @@ public interface MemberRepository extends JpaRepository<Member, String> {
 
     Page<Member> findByStatusIn(List<MemberStatus> statuses, Pageable pageable);
 
-
-
-    //회원조회용도
-    @Query("SELECT COUNT(m) FROM Member m")
-    long countAllMembers();
-
-    @Query("SELECT COUNT(m) FROM Member m WHERE m.status <> 0")
-    long countActiveMembers();
-
-    @Query("SELECT COUNT(m) FROM Member m WHERE m.status = 1")
-    long countNormalMembers();
-
-    @Query("SELECT COUNT(m) FROM Member m WHERE m.status = 2")
-    long countVerifiedMembers();
 }

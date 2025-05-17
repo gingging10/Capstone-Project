@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.tailwindcss.com/3.2.0"></script>
+  <style>
+    a, button, input, select, h1, h2, h3, h4, h5, * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: none;
+      text-decoration: none;
+      background: none;
+      -webkit-font-smoothing: antialiased;
+    }
+    menu, ol, ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <title>Admin Login</title>
+</head>
+<body>
+  <div class="h-[1024px] relative"
+    style="background: url('/image/managerbackground.jpg') center; background-size: cover; background-repeat: no-repeat;">
+    <div class="flex flex-col gap-0 items-center justify-center w-[400px] h-[750px] absolute left-[50%] top-[115px]" style="translate: -50%">
+      <form id="admin-login-form"
+            class="bg-[rgba(255,255,255,0.60)] rounded-[50px] pt-5 pr-[50px] pb-5 pl-[50px] flex flex-col gap-[20px] items-center justify-center w-[400px] h-[400px]"
+            onsubmit="return validateForm(event)">
+        
+        <div class="text-[#000000] text-center text-2xl font-bold">Login</div>
+
+        <!-- ID 입력 -->
+        <div class="w-[250px] relative">
+          <input type="text" name="ad_id" placeholder="ID"
+                 class="w-full rounded border px-3 py-4 text-black bg-white"
+                 required />
+          <div class="absolute left-3 top-0 text-sm text-gray-500">ID</div>
+        </div>
+
+        <!-- Password 입력 -->
+        <div class="w-[250px] relative">
+          <input type="password" name="ad_pw" placeholder="Password"
+                 class="w-full rounded border px-3 py-4 text-black bg-white"
+                 required />
+          <div class="absolute left-3 top-0 text-sm text-gray-500">Password</div>
+        </div>
+
+        <!-- 로그인 버튼 -->
+        <button type="submit"
+                class="w-[250px] h-10 bg-blue-600 text-white font-semibold rounded shadow hover:bg-blue-700 transition-all">
+          로그인
+        </button>
+      </form>
+
+      <div class="text-white text-center font-bold text-[15px] leading-6 mt-4">
+        Copyright GC COMPANY Corp. All rights Reserved
+      </div>
+    </div>
+  </div>
+
+<script>
+  async function validateForm(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const id = form.ad_id.value.trim();
+    const pw = form.ad_pw.value.trim();
+
+    const formData = new URLSearchParams();
+    formData.append("ad_id", id);
+    formData.append("ad_pw", pw);
+
+    const response = await fetch("/api/admin/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData
+    });
+
+    if (response.ok) {
+      const json = await response.json();
+      if (json.redirect) {
+        window.location.href = json.redirect;  // ✅ 브라우저가 실제 이동함
+      }
+    } else {
+      const text = await response.text();
+      alert(text);
+    }
+
+    return false;
+  }
+</script>
+</body>
+</html>

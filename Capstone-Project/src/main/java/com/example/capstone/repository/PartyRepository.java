@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface PartyRepository extends JpaRepository<Party, Long> {
     List<Party> findByCategory(String category);
-    void deleteAllByIdInBatch(Iterable<Long> ids);
 }
