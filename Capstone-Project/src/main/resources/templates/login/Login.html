@@ -3,35 +3,34 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>로그인</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      html,
-      body {
+      html, body {
         height: 100%;
         margin: 0;
-        overflow: auto;
+        font-family: Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
     </style>
   </head>
-  <body class="bg-[#F3F4F6]">
+  <body class="bg-gray-50">
     <!-- 헤더 -->
     <div th:replace="~{component/Header :: header}"></div>
 
     <!-- 사이드바 -->
-    <div th:replace="~{component/My-menu :: my-menu}"></div>
+    <!-- <div th:replace="~{component/My-menu :: my-menu}"></div> -->
 
-    <!-- 주 내용 -->
+    <!-- 주 내용(로그인 폼 영역) -->
     <div class="flex flex-col items-center justify-center min-h-screen px-4 py-8">
       <div class="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
         <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">로그인</h1>
 
-        <!-- 로그인 버튼 -->
+        <!-- 로그인 버튼 영역 -->
         <div class="space-y-6">
-          <!-- 카카오 로그인 -->
-          <button class="w-full h-12 flex items-center justify-center gap-4 rounded-lg bg-[#fee500] hover:bg-[#fdd835] transition">
+          <!-- 구글 로그인 버튼 -->
+          <a href="/oauth2/authorization/google" class="w-full h-12 flex items-center justify-center gap-4 rounded-lg bg-white border border-gray-300 hover:bg-gray-100 transition">
             <svg
               width="24"
               height="24"
@@ -39,40 +38,7 @@
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M12 3C17.8 3 22.501 6.664 22.501 11.185C22.501 15.705 17.8 19.369 12.001 19.369C11.4236 19.368 10.8469 19.3312 10.274 19.259L5.86601 22.142C5.36501 22.407 5.18801 22.378 5.39401 21.729L6.28601 18.051C3.40601 16.591 1.50101 14.061 1.50101 11.185C1.50101 6.665 6.20101 3 12.001 3Z"
-                fill="black"
-              ></path>
-            </svg>
-            <p class="text-[15px] font-medium text-black">카카오 계정으로 로그인</p>
-          </button>
-
-          <!-- 네이버 로그인 -->
-          <button class="w-full h-12 flex items-center justify-center gap-4 rounded-lg bg-[#1ec800] hover:bg-[#17b000] transition">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.273 12.845L7.376 0H0V24H7.726V11.156L16.624 24H24V0H16.273V12.845Z"
-                fill="white"
-              ></path>
-            </svg>
-            <p class="text-[15px] font-medium text-white">네이버 계정으로 로그인</p>
-          </button>
-
-          <!-- 구글 로그인 -->
-          <button class="w-full h-12 flex items-center justify-center gap-4 rounded-lg bg-white border border-gray-300 hover:bg-gray-100 transition">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              <!-- 구글 로고 SVG -->
               <path
                 fill-rule="evenodd"
                 clip-rule="evenodd"
@@ -99,12 +65,12 @@
               ></path>
             </svg>
             <p class="text-[15px] font-medium text-gray-700">구글 계정으로 로그인</p>
-          </button>
+          </a>
 
-          <!-- 매니저 로그인 -->
-          <button class="w-40 h-12 flex items-center justify-center gap-4 rounded-lg bg-gray-800 hover:bg-gray-700 transition mx-auto">
-            <p class="text-[14px] font-medium text-white">매니저 로그인</p>
-          </button>
+          <!-- 회원가입하기 버튼 -->
+          <a href="/oauth2/authorization/google" class="w-3/4 mx-auto h-12 flex items-center justify-center gap-4 rounded-lg bg-blue-500 hover:bg-blue-600 transition text-white text-[15px] font-medium text-center">
+            회원가입하기
+          </a>
         </div>
       </div>
     </div>

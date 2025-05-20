@@ -19,25 +19,27 @@
     <!-- 헤더 -->
     <div th:replace="~{component/Header :: header}"></div>
 
-    <!-- 형식 -->
-    <div class="flex items-center justify-center min-h-screen">
-      <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
+    <!-- 헤더와 폼 사이 간격 -->
+    <div class="mt-20"></div>
+
+    <!-- 회원가입 폼 -->
+    <div class="flex items-center justify-center flex-1">
+      <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-8 mb-20">
         <h1 class="text-2xl font-bold text-gray-800 text-center mb-6">회원가입</h1>
-        <form action="#" method="POST" class="space-y-4">
-          <!-- 아이디 -->
+        <form id="signupForm" class="space-y-4">
+          <!-- 아이디 (수정불가) -->
           <div>
-            <label for="username" class="block text-sm font-medium text-gray-700">아이디</label>
+            <label for="id" class="block text-sm font-medium text-gray-700">아이디</label>
             <input
               type="text"
-              id="username"
-              name="username"
+              id="id"
+              name="id"
               value="honggildong"
               class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-500 focus:outline-none"
               readonly
             />
           </div>
-
-          <!-- 이름 -->
+          <!-- 이름 (수정 불가) -->
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700">이름</label>
             <input
@@ -49,21 +51,19 @@
               readonly
             />
           </div>
-
-          <!-- 연락처 -->
+          <!-- 연락처 입력-->
           <div>
-            <label for="phone" class="block text-sm font-medium text-gray-700">연락처</label>
+            <label for="phoneNum" class="block text-sm font-medium text-gray-700">연락처</label>
             <input
               type="text"
-              id="phone"
-              name="phone"
+              id="phoneNum"
+              name="phoneNum"
               placeholder="예: 010-1234-5678"
               class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
-
-          <!-- 대학교 -->
+          <!-- 대학교 입력-->
           <div>
             <label for="university" class="block text-sm font-medium text-gray-700">대학교</label>
             <input
@@ -75,34 +75,31 @@
               required
             />
           </div>
-
-          <!-- 학과 -->
+          <!-- 학과 입력-->
           <div>
-            <label for="department" class="block text-sm font-medium text-gray-700">학과</label>
+            <label for="schoolDepartment" class="block text-sm font-medium text-gray-700">학과</label>
             <input
               type="text"
-              id="department"
-              name="department"
+              id="schoolDepartment"
+              name="schoolDepartment"
               placeholder="예: 컴퓨터공학과"
               class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
-
-          <!-- 학번 -->
+          <!-- 학번 입력-->
           <div>
-            <label for="student-id" class="block text-sm font-medium text-gray-700">학번</label>
+            <label for="schoolCode" class="block text-sm font-medium text-gray-700">학번</label>
             <input
               type="text"
-              id="student-id"
-              name="student-id"
+              id="schoolCode"
+              name="schoolCode"
               placeholder="예: 202512345"
               class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
-
-          <!-- 웹메일 -->
+          <!-- 웹메일(수정 불가) -->
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700">웹메일</label>
             <input
@@ -110,12 +107,13 @@
               id="email"
               name="email"
               placeholder="예: example@kangwon.ac.kr"
-              class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              th:value="${email}"
+              class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-500 focus:outline-none"
               required
+              readonly
             />
           </div>
-
-          <!-- 버튼 -->
+          <!-- 버튼: 취소/회원가입-->
           <div class="flex justify-between items-center mt-6">
             <button
               type="reset"
@@ -135,6 +133,35 @@
     </div>
 
     <!-- 푸터 -->
-    <div th:replace="~{component/Footer :: footer}"></div>
+    <div th:replace="~{component/Footer :: footer}" class="w-full bg-white pt-10"></div>
+
+    <script>
+      // 회원가입 폼 제출 이벤트
+      document.getElementById('signupForm').addEventListener('submit', async function(e) {
+        e.preventDefault(); // 기본 제출 동작 방지
+        // 입력값 객체로 생성
+        const data = {
+          id: document.getElementById('id').value,
+          name: document.getElementById('name').value,
+          schoolCode: document.getElementById('schoolCode').value,
+          schoolDepartment: document.getElementById('schoolDepartment').value,
+          phoneNum: document.getElementById('phoneNum').value,
+          email: document.getElementById('email').value
+        };
+        // 서버로 회원가입 요청
+        const res = await fetch('/api/members', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        // 결과에 따라 알림 및 이동
+        if (res.ok) {
+          alert('회원가입 성공!');
+          window.location.href = '/';
+        } else {
+          alert('회원가입 실패');
+        }
+      });
+    </script>
   </body>
 </html>
