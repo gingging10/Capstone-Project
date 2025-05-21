@@ -3,33 +3,50 @@
   <div class="max-w-[1440px] mx-auto flex items-center justify-between h-16 px-6">
     <!-- 로고 -->
     <div class="flex items-center">
-      <p class="text-2xl font-bold text-black uppercase">나랑 어때</p>
+      <a href="/" aria-label="홈으로 이동" class="text-2xl font-bold text-black uppercase tracking-wide">
+        나랑 어때
+      </a>
     </div>
+
     <!-- 서비스 목록 -->
-    <nav class="hidden md:flex gap-20">
-      <a href="#" class="text-base text-gray-700 hover:text-blue-500 transition">스포츠</a>
-      <a href="#" class="text-base text-gray-700 hover:text-blue-500 transition">배달</a>
-      <a href="#" class="text-base text-gray-700 hover:text-blue-500 transition">공구</a>
-      <a href="#" class="text-base text-gray-700 hover:text-blue-500 transition">게임</a>
-      <a href="#" class="text-base text-gray-700 hover:text-blue-500 transition">OTT</a>
+    <nav class="hidden md:flex gap-10" role="navigation" aria-label="메인 메뉴">
+      <a href="#" class="text-base text-gray-700 hover:text-blue-600 hover:underline underline-offset-4 transition-all duration-200 py-2 px-3 rounded-md">
+        스포츠
+      </a>
+      <a href="#" class="text-base text-gray-700 hover:text-blue-600 hover:underline underline-offset-4 transition-all duration-200 py-2 px-3 rounded-md">
+        배달
+      </a>
+      <a href="#" class="text-base text-gray-700 hover:text-blue-600 hover:underline underline-offset-4 transition-all duration-200 py-2 px-3 rounded-md">
+        공구
+      </a>
+      <a href="#" class="text-base text-gray-700 hover:text-blue-600 hover:underline underline-offset-4 transition-all duration-200 py-2 px-3 rounded-md">
+        게임
+      </a>
+      <a href="#" class="text-base text-gray-700 hover:text-blue-600 hover:underline underline-offset-4 transition-all duration-200 py-2 px-3 rounded-md">
+        OTT
+      </a>
     </nav>
-    <!-- 로그인 버튼 또는 사용자 이름 -->
+
+    <!-- 로그인/사용자 정보 -->
     <div>
-      <!-- 로그인 하지 않은 경우: 로그인 버튼 표시-->
+      <!-- 로그인하지 않은 경우 -->
       <a
         href="/login"
         th:href="@{/login}"
-        class="px-4 py-2 border border-gray-700 text-gray-700 rounded-full hover:bg-gray-700 hover:text-white transition"
         th:if="${#authentication == null or #authentication.principal == null}"
+        class="px-4 py-2 border border-gray-700 text-gray-700 rounded-full hover:bg-gray-700 hover:text-white transition-colors duration-200"
+        aria-label="로그인"
       >
         로그인
       </a>
-      <!-- 로그인한 경우: 사용자 이름(아이디) 표시, 버튼 비활성화-->
+
+      <!-- 로그인한 경우 -->
       <a
         href="#"
-        class="px-4 py-2 border border-gray-700 text-gray-700 rounded-full cursor-default"
+        class="px-4 py-2 border border-gray-300 bg-gray-100 text-gray-600 rounded-full cursor-default"
         style="pointer-events: none;"
         th:if="${#authentication != null and #authentication.principal != null}"
+        aria-label="로그인 사용자"
       >
         <span th:text="${#authentication.principal}">사용자이름</span>님
       </a>

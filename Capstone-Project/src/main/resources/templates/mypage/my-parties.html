@@ -6,102 +6,72 @@
     <title>참여중인 파티</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      html, body {
+      html,
+      body {
         height: 100%;
         margin: 0;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
     </style>
   </head>
-  <body class="bg-gray-50 h-screen flex flex-col">
+  <body class="bg-gray-50 min-h-screen flex flex-col">
     <!-- 헤더 -->
     <div th:replace="~{component/Header :: header}" class="w-full"></div>
 
     <!-- 메인 콘텐츠 -->
     <div class="flex flex-1">
       <!-- 사이드바 -->
-      <div th:replace="~{component/My-menu :: my-menu}" class="w-64 bg-white shadow-md"></div>
+      <div
+        th:replace="~{component/My-menu :: my-menu}"
+        class="w-64 bg-white shadow-md"
+      ></div>
 
       <!-- 메인 콘텐츠 -->
       <div class="flex-1 p-8">
-        <h1 class="text-2xl font-bold text-gray-800 mb-6">참여중인 파티</h1>
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">참여중인 파티</h1>
 
         <!-- 필터 버튼 -->
         <div class="flex gap-4 mb-6">
-          <button class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600">
+          <button
+            class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600"
+          >
             참여중
           </button>
         </div>
 
-        <!-- 파티 리스트 -->
+        <!-- 파티 리스트 (동적 출력) -->
         <div class="space-y-4">
-          <!-- OTT 파티 -->
-          <div class="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow">
-            <p class="text-lg font-medium text-gray-800">OTT - 넷플릭스 5/5명</p>
-            <p class="text-gray-600">2025.02.12</p>
+          <div th:if="${#lists.isEmpty(partyList)}" class="text-center text-gray-500 py-8">
+            참여중인 파티가 없습니다.
           </div>
-          <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow">
-            <p class="text-lg font-medium text-gray-800">OTT - 디즈니 플러스 4/5명</p>
-            <p class="text-gray-600">2025.03.01</p>
-          </div>
-
-          <!-- 스포츠 파티 -->
-          <div class="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow">
-            <p class="text-lg font-medium text-gray-800">스포츠 - 축구 파티 10/10명</p>
-            <p class="text-gray-600">2025.04.12</p>
-          </div>
-          <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow">
-            <p class="text-lg font-medium text-gray-800">스포츠 - 농구 파티 8/10명</p>
-            <p class="text-gray-600">2025.05.05</p>
-          </div>
-
-          <!-- 배달 파티 -->
-          <div class="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow">
-            <p class="text-lg font-medium text-gray-800">배달 - 치킨 파티 3/4명</p>
-            <p class="text-gray-600">2025.06.15</p>
-          </div>
-          <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow">
-            <p class="text-lg font-medium text-gray-800">배달 - 피자 파티 2/3명</p>
-            <p class="text-gray-600">2025.07.01</p>
-          </div>
-
-          <!-- 공구 파티 -->
-          <div class="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow">
-            <p class="text-lg font-medium text-gray-800">공구 - 드릴 대여 1/2명</p>
-            <p class="text-gray-600">2025.08.10</p>
-          </div>
-          <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow">
-            <p class="text-lg font-medium text-gray-800">공구 - 톱 대여 2/3명</p>
-            <p class="text-gray-600">2025.09.05</p>
-          </div>
-
-          <!-- 게임 파티 -->
-          <div class="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow">
-            <p class="text-lg font-medium text-gray-800">게임 - 롤 파티 5/5명</p>
-            <p class="text-gray-600">2025.03.12</p>
-          </div>
-          <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow">
-            <p class="text-lg font-medium text-gray-800">게임 - 배틀그라운드 4/4명</p>
-            <p class="text-gray-600">2025.04.20</p>
+          <div th:each="party : ${partyList}"
+               class="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow">
+            <p class="text-lg font-medium text-gray-800" th:text="${party.title}"></p>
+            <p class="text-gray-600" th:text="${party.deadline}"></p>
+            <!-- deadline은 String으로 서비스에서 변환해서 넘김 -->
           </div>
         </div>
 
         <!-- 페이지 네비게이션 -->
         <div class="flex items-center justify-center mt-8">
-          <button class="p-2">
-            <img src="/Capstone-Project/src/main/resources/static/image/left-arrow.png" alt="이전" class="w-6 h-6" />
-          </button>
-          <p class="mx-4 text-gray-700">1 / 10</p>
-          <button class="p-2">
-            <img src="/Capstone-Project/src/main/resources/static/image/right-arrow.png" alt="다음" class="w-6 h-6" />
-          </button>
+          <a th:if="${currentPage > 1}"
+             th:href="@{/mypage/my-parties(page=${currentPage - 1})}"
+             class="p-2">
+            <img src="/image/left-arrow.png" alt="이전" class="w-6 h-6" />
+          </a>
+          <p class="mx-4 text-gray-700" th:text="${currentPage} + ' / ' + ${totalPages}"></p>
+          <a th:if="${currentPage < totalPages}"
+             th:href="@{/mypage/my-parties(page=${currentPage + 1})}"
+             class="p-2">
+            <img src="/image/right-arrow.png" alt="다음" class="w-6 h-6" />
+          </a>
         </div>
       </div>
     </div>
 
     <!-- 푸터 -->
-    <div th:replace="~{component/Footer :: footer}" class="w-full"></div>
+    <div th:replace="~{component/Footer :: footer}" class="w-full flex-shrink-0"></div>
   </body>
 </html>

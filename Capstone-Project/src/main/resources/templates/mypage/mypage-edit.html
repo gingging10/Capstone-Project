@@ -26,27 +26,41 @@
     <div class="flex items-center justify-center min-h-screen px-4">
       <div class="w-full max-w-lg bg-white rounded-lg shadow-md p-8">
         <h1 class="text-3xl font-bold text-gray-800 text-center mb-8">내 정보 수정</h1>
-        <form action="#" method="POST" class="space-y-6">
+        <form th:action="@{/mypage/edit}" method="post" class="space-y-6">
           <!-- 아이디 -->
           <div>
-            <label for="username" class="block text-sm font-medium text-gray-700">아이디</label>
+            <label for="id" class="block text-sm font-medium text-gray-700">아이디</label>
             <input
               type="text"
-              id="username"
-              name="username"
-              value="honggildong"
+              id="id"
+              name="id"
+              th:value="${myPage.id}"
               class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-500 focus:outline-none"
               readonly
             />
           </div>
 
-          <!-- 휴대전화 -->
+          <!-- 이름 -->
           <div>
-            <label for="phone" class="block text-sm font-medium text-gray-700">휴대전화</label>
+            <label for="name" class="block text-sm font-medium text-gray-700">이름</label>
             <input
               type="text"
-              id="phone"
-              name="phone"
+              id="name"
+              name="name"
+              th:value="${myPage.name}"
+              class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              required
+            />
+          </div>
+
+          <!-- 휴대전화 -->
+          <div>
+            <label for="phoneNum" class="block text-sm font-medium text-gray-700">휴대전화</label>
+            <input
+              type="text"
+              id="phoneNum"
+              name="phoneNum"
+              th:value="${myPage.phoneNum}"
               placeholder="예: 010-1234-5678"
               class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
               required
@@ -55,11 +69,12 @@
 
           <!-- 대학교 -->
           <div>
-            <label for="university" class="block text-sm font-medium text-gray-700">대학교</label>
+            <label for="schoolCode" class="block text-sm font-medium text-gray-700">대학교</label>
             <input
               type="text"
-              id="university"
-              name="university"
+              id="schoolCode"
+              name="schoolCode"
+              th:value="${myPage.schoolCode}"
               placeholder="예: 강원대학교"
               class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
               required
@@ -68,38 +83,13 @@
 
           <!-- 학과 -->
           <div>
-            <label for="department" class="block text-sm font-medium text-gray-700">학과</label>
+            <label for="schoolDepartment" class="block text-sm font-medium text-gray-700">학과</label>
             <input
               type="text"
-              id="department"
-              name="department"
+              id="schoolDepartment"
+              name="schoolDepartment"
+              th:value="${myPage.schoolDepartment}"
               placeholder="예: 컴퓨터공학과"
-              class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-              required
-            />
-          </div>
-
-          <!-- 학번 -->
-          <div>
-            <label for="student-id" class="block text-sm font-medium text-gray-700">학번</label>
-            <input
-              type="text"
-              id="student-id"
-              name="student-id"
-              placeholder="예: 202512345"
-              class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-              required
-            />
-          </div>
-
-          <!-- 웹메일 -->
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700">웹메일</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="예: example@kangwon.ac.kr"
               class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
               required
             />
