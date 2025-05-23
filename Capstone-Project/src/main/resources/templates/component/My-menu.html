@@ -45,14 +45,13 @@
         </a>
 
         <!-- 로그아웃 -->
-        <a
-          href="#"
-          class="block py-3 px-6 text-base text-gray-700 hover:bg-red-100 hover:text-red-600 rounded-lg transition-colors duration-200"
-          aria-label="로그아웃"
-        >
-          로그아웃
-        </a>
-      </div>
+        <form th:action="@{/logout}" method="post" style="margin:0;">
+          <button type="submit"
+            class="block w-full text-left py-3 px-6 text-base text-gray-700 hover:bg-red-100 hover:text-red-600 rounded-lg transition-colors duration-200"
+            aria-label="로그아웃">
+            로그아웃
+          </button>
+        </form>
     </div>
   </body>
 </html>

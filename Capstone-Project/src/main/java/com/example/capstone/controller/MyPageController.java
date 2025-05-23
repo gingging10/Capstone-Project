@@ -1,9 +1,12 @@
 package com.example.capstone.controller;
 
+import com.example.capstone.domain.MemberStatus;
 import com.example.capstone.dto.MyPageResponse;
 import com.example.capstone.dto.PartyListDto;
+import com.example.capstone.repository.MemberRepository;
 import com.example.capstone.service.MyPageService;
 import lombok.RequiredArgsConstructor;
+import com.example.capstone.domain.Member;
 
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,18 +21,24 @@ import java.util.List;
 public class MyPageController {
 
     private final MyPageService myPageService;
+    private final MemberRepository memberRepository; // 추가
 
     @GetMapping
     public String myPage(Model model, @AuthenticationPrincipal OAuth2User principal) {
         String id;
         if (principal == null) {
-            // 테스트용 기본 id (DB에 존재하는 테스트 계정 id로 변경)
             id = "userA";
         } else {
             id = principal.getAttribute("id");
         }
         MyPageResponse myPage = myPageService.getMyPage(id);
+
+        // Member 엔티티에서 status 조회
+        Member member = memberRepository.findById(id).orElse(null);
+        MemberStatus status = (member != null) ? member.getStatus() : null;
+
         model.addAttribute("myPage", myPage);
+        model.addAttribute("memberStatus", status); // status를 별도로 전달
         return "mypage/mypage";
     }
 
