@@ -26,42 +26,31 @@ import java.util.Collections;
 public class JwtProvider {
 
     @Value("${custom.jwt.secretKey}")
-    private String secretKeyCode; // JWT 서명에 사용할 비밀키 (application.yml에서 주입)
+    private String secretKeyCode;
 
     @Value("${custom.jwt.access-token-exp}")
-    private int accessTokenExp; // Access Token 만료 시간(초)
+    private int accessTokenExp;
 
     @Value("${custom.jwt.refresh-token-exp}")
-    private int refreshTokenExp; // Refresh Token 만료 시간(초)
+    private int refreshTokenExp;
 
-    private SecretKey secretKey; // 실제 서명에 사용할 SecretKey 객체 (캐싱)
+    private SecretKey secretKey;
 
 
-    /**
-     * JWT 토큰에서 사용자 인증 정보(Authentication) 추출
-     * @param token JWT 토큰 문자열
-     * @return Authentication 객체 (Spring Security에서 사용)
-     */
     public Authentication getAuthentication(String token) {
-        Map<String, Object> claims = getClaims(token); // 토큰에서 클레임 추출
+        Map<String, Object> claims = getClaims(token);
         String username = (String) claims.get("username"); // 또는 "id", "email" 등 claim 키에 맞게
         String role = (String) claims.get("role");         // 토큰에 넣은 role 이름 맞춰야 함
     
-        // UsernamePasswordAuthenticationToken 생성 (principal, credentials, 권한)
         return new UsernamePasswordAuthenticationToken(
-            username, // pricipal에 username이 들어감.
+            username,
             null,
             Collections.singletonList(new SimpleGrantedAuthority(role))
         );
     }
 
-    /**
-     * SecretKey 객체 반환 (최초 1회 생성 후 재사용)
-     * @return SecretKey
-     */
     public SecretKey getSecretKey(){
         if( secretKey == null){
-            // 비밀키를 Base64 인코딩 후 SecretKey로 변환
             String encoding = Base64.getEncoder().encodeToString(secretKeyCode.getBytes());
 		    secretKey = Keys.hmacShaKeyFor(encoding.getBytes());
         }
@@ -82,8 +71,8 @@ public class JwtProvider {
         // 쓰는게 가독성이 좋다
         JwtBuilder jwtBuilder = Jwts.builder()
         .setSubject("ljh")  // ← 구버전 호환 방식
-        .setExpiration(accessTokenExpiresIn) // 만료
-        .signWith(getSecretKey()); // 서명
+        .setExpiration(accessTokenExpiresIn)
+        .signWith(getSecretKey());
         
         
         // map 담겨있는 개인정보를 뺴서 set에 담음
@@ -101,20 +90,10 @@ public class JwtProvider {
         return jwtBuilder.signWith(getSecretKey()).compact();
     }
 
-    /**
-     * Access Token 생성
-     * @param map 사용자 정보(클레임)
-     * @return Access Token 문자열
-     */
     public String getAccesToken(Map<String, Object> map){
         return genToken(map, accessTokenExp); // ← yml 설정값 사용
     }
     
-    /**
-     * Refresh Token 생성
-     * @param map 사용자 정보(클레임)
-     * @return Refresh Token 문자열
-     */
     public String getRefreshToken(Map<String, Object> map){
         return genToken(map, refreshTokenExp); // ← yml 설정값 사용
     }
