@@ -6,6 +6,7 @@ import com.example.capstone.service.PartyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,16 @@ public class PartyController {
 
     private final PartyService partyService;
 
-    // 🔹 HTML 렌더링 (템플릿 반환)
+    // 메인 파티 리스트 페이지 렌더링 (index.html과 연결)
+    @GetMapping({"/party", "/party/index"})
+    public String partyMainPage(Model model) {
+        // 파티 목록을 가져와서 모델에 담아줌 (카테고리: 스포츠 예시)
+        List<Party> parties = partyService.getAllParties("스포츠");
+        model.addAttribute("parties", parties);
+        return "party/index";
+    }
+
+    // 🔹 HTML 렌더링 (파티 생성 폼)
     @GetMapping("/parties/create-groupbuy")
     public String showBuyForm() {
         return "Create-Party/Create-Groupbuy";

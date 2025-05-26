@@ -48,8 +48,9 @@ public class SecurityConfig {
                     "/oauth2/**",
                     "/api/admin/**",                      // Admin은 별도 로그인 처리 → 인증 제외
                     "/error",
-                    "/css/**", "/js/**", "/images/**", "/favicon.ico", // 정적 리소스 허용
-                    "/login", "/login/**"               // 커스텀 로그인 폼 접근 허용
+                    "/css/**", "/js/**", "/image/**", "/favicon.ico", // 정적 리소스 허용
+                    "/login", "/login/**",               // 커스텀 로그인 폼 접근 허용
+                    "/party", "/party/**" // 메인페이지 접근 허용
                     //"/mypage", "/mypage/**" // 마이페이지 접근 허용
                 ).permitAll()
                 // JWT 인증이 필요한 내부 API 
