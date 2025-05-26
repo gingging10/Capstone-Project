@@ -7,7 +7,7 @@ import java.util.Optional;
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member, String> {
-    Optional<Member> findByEmail(String email);
+    Optional<Member> findByEmail(String email); // 이메일로 회원 조회
     // 기본적인 CRUD 메서드는 이미 포함되어 있음
     // 추가로 필요한 메서드는 여기에 정의 가능
 }

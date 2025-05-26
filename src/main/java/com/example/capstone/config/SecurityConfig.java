@@ -31,6 +31,7 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/api/members/**",   // API 정보 조회 허용
                                 "/members/**",       // 회원가입
+                                "/api/verify/**",    // 이메일 인증
                                 "/oauth2/**",        // 로그인 redirect
                                 "/login/**",         // 로그인
                                 "/error"             // 에러

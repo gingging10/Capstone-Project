@@ -13,6 +13,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     // 리턴: 인증된 사용자 정보
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) {
+
         return super.loadUser(userRequest);
     }
 }

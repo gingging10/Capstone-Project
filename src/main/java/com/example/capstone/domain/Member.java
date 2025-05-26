@@ -31,7 +31,7 @@ public class Member {
     private String email; // 학교 웹메일
 
     @Builder.Default  // 기본값
-    @Enumerated(EnumType.ORDINAL)  // (0,1,2) 0일때 제한회원 1일때 회원 2일때 인증회원
+    @Enumerated(EnumType.STRING)  // (0,1,2) 0일때 제한회원 1일때 회원 2일때 인증회원
     @Column(nullable = false)
     private MemberStatus status = MemberStatus.NORMAL;
 }

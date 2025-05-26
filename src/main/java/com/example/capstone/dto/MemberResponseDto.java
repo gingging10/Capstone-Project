@@ -1,6 +1,7 @@
 package com.example.capstone.dto;
 
 import com.example.capstone.domain.Member;
+
 import lombok.Getter;
 
 // 클라에 회원정보를 전달하는 응답 DTO
@@ -21,5 +22,6 @@ public class MemberResponseDto {
         this.schoolDepartment = m.getSchoolDepartment();
         this.phoneNum = m.getPhoneNum();
         this.email = m.getEmail();
+
     }
 }

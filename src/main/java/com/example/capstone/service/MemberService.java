@@ -43,6 +43,7 @@ public class MemberService {
         member.setPhoneNum(dto.getPhoneNum());
         member.setEmail(dto.getEmail());
 
+
         return memberRepository.save(member); // 수정된 내용 DB 저장
 
     }
