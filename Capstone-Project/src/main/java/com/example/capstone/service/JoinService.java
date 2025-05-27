@@ -1,6 +1,5 @@
 package com.example.capstone.service;
 
-
 import com.example.capstone.domain.*;
 import com.example.capstone.dto.JoinRequest;
 import com.example.capstone.repository.*;

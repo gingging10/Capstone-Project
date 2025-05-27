@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mainpage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        overflow: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- 헤더 -->
+    <div th:replace="~{component/Header :: header}"></div>
+
+    <!-- 사이드바 -->
+    <div th:replace="~{component/My-menu :: my-menu}"></div>
+
+    <!-- 배너 -->
+    <div
+      class="w-full h-[240px] flex items-center justify-center mt-8 overflow-hidden bg-black"
+    >
+      <img
+        src="https://images.pexels.com/photos/27668685/pexels-photo-27668685/free-photo-of-a-row-of-burgers-on-a-counter-with-paper-wrappers.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        alt="배달 배너"
+        class="w-full h-full object-cover"
+        style="object-position: center"
+      />
+    </div>
+
+    <!-- 메인 콘텐츠 -->
+    <div class="w-full max-w-[1440px] mx-auto mt-8 px-4">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <!-- 메인 페이지 화살표 -->
+        <div class="relative">
+          <!-- 왼쪽 화살표 -->
+          <div class="absolute left-[-70px] top-1/2 transform -translate-y-1/2">
+            <button onclick="location.href='/party/main-sports'">
+              <img
+                src="/image/left-arrow.png"
+                alt="Left Arrow"
+                class="w-8 h-8 cursor-pointer"
+              />
+            </button>
+          </div>
+
+          <!-- 배달 제목과 파티만들기 버튼 -->
+          <div class="flex justify-between items-center mb-6">
+            <p class="text-3xl font-bold text-gray-800">배달</p>
+            <button
+              class="px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-600 transition"
+              th:onclick="|location.href='@{/parties/create-sports}'|"
+            >
+              파티 만들기
+            </button>
+          </div>
+
+          <!-- 카드 목록 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- 동적 카드 반복 -->
+            <div
+              th:each="party : ${parties}"
+              th:onclick="|location.href='@{/party/detail/{id}(id=${party.id})}'|"
+              class="bg-gray-100 border border-gray-300 p-4 rounded-lg shadow-sm cursor-pointer hover:shadow-md transition"
+            >
+              <!-- 배달 메뉴 -->
+              <p
+                class="text-sm text-gray-600"
+                th:text="'메뉴: ' + ${party.menu}"
+              >
+                메뉴
+              </p>
+
+              <!-- 파티 제목 -->
+              <p
+                class="text-xl font-bold text-gray-800 mt-2"
+                th:text="${party.title}"
+              >
+                파티 제목
+              </p>
+
+              <!-- 모집 인원 -->
+              <p
+                class="text-sm text-gray-600"
+                th:text="'모집 인원: ' + ${party.maxPeople} + '명'"
+              >
+                모집 인원
+              </p>
+
+              <!-- 모집 기간 -->
+              <p
+                class="text-sm text-gray-600"
+                th:text="'모집 기간: ' + ${#temporals.format(party.recruitDeadline, 'yyyy-MM-dd')}"
+              >
+                모집 기간
+              </p>
+
+              <!-- 날짜 -->
+              <p
+                class="text-sm text-gray-600"
+                th:text="'날짜: ' + ${#temporals.format(party.eventDate, 'yyyy-MM-dd')}"
+              >
+                날짜
+              </p>
+
+              <!-- 인당 가격 -->
+              <p
+                class="text-sm text-gray-600"
+                th:text="'인당 가격: ' + ${party.price} + '원'"
+              >
+                인당 가격
+              </p>
+            </div>
+          </div>
+
+          <!-- 파티가 없을 때 -->
+          <div
+            th:if="${#lists.isEmpty(parties)}"
+            class="text-center text-gray-500 py-10"
+          >
+            현재 생성된 배달 파티가 없습니다.
+          </div>
+
+          <!-- 오른쪽 화살표 -->
+          <div
+            class="absolute right-[-70px] top-1/2 transform -translate-y-1/2"
+          >
+            <button onclick="location.href='/party/main-groupbuy'">
+              <img
+                src="/image/right-arrow.png"
+                alt="Right Arrow"
+                class="w-8 h-8 cursor-pointer"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 푸터 -->
+    <div th:replace="~{component/Footer :: footer}"></div>
+  </body>
+</html>

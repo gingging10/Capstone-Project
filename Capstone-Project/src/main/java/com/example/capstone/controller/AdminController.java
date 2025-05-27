@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api/admin")  // 경로 통일
+@RequestMapping("/api/admin") // 경로 통일
 @RequiredArgsConstructor
 public class AdminController {
 
@@ -33,8 +33,8 @@ public class AdminController {
     @PostMapping("/login")
     @ResponseBody
     public ResponseEntity<?> login(@RequestParam("ad_id") String ad_id,
-                                @RequestParam("ad_pw") String ad_pw,
-                                HttpSession session) {
+            @RequestParam("ad_pw") String ad_pw,
+            HttpSession session) {
 
         AdminResponseDto dto = adminService.login(ad_id, ad_pw);
 
@@ -93,8 +93,8 @@ public class AdminController {
     // 사용자 리스트 페이지
     @GetMapping("/AdminUserlist")
     public String adminUserListPage(@RequestParam(name = "page", defaultValue = "0") int page,
-                                    Model model,
-                                    HttpSession session) {
+            Model model,
+            HttpSession session) {
         if (session.getAttribute("adminId") == null) {
             return "redirect:/api/admin/unauthorized";
         }
@@ -118,8 +118,8 @@ public class AdminController {
 
     @PostMapping("/deactivate")
     public String deactivateMembers(@RequestParam("memberIds") List<String> memberIds,
-                                    HttpSession session,
-                                    RedirectAttributes redirectAttributes) {
+            HttpSession session,
+            RedirectAttributes redirectAttributes) {
 
         if (session.getAttribute("adminId") == null) {
             return "redirect:/api/admin/unauthorized";

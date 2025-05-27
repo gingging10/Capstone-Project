@@ -1,4 +1,4 @@
-<!-- party-datil 컴포넌트-->
+<!-- party-detail 컴포넌트-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
@@ -25,11 +25,11 @@
       <section
         class="bg-white rounded-lg shadow-lg p-6 w-full max-w-3xl text-center"
       >
-        <h1 class="text-3xl font-bold text-gray-800" th:text="${partyTitle}">
-          홍길동님의 파티
+        <h1 class="text-3xl font-bold text-gray-800" th:text="${party.title}">
+          파티 제목
         </h1>
-        <p class="text-lg text-gray-600 mt-2" th:text="${partySubtitle}">
-          OTT 서비스 - 넷플릭스
+        <p class="text-lg text-gray-600 mt-2" th:text="${party.category}">
+          카테고리
         </p>
       </section>
 
@@ -38,29 +38,15 @@
         class="bg-gray-100 rounded-lg shadow-md p-6 w-full max-w-3xl mt-6"
       >
         <div class="grid grid-cols-2 gap-6 sm:grid-cols-1">
-          <!-- 서비스명 -->
-          <div class="flex flex-col">
-            <p class="text-gray-700 font-medium">서비스명:</p>
-            <p class="text-gray-900 font-bold" th:text="${serviceName}">
-              넷플릭스
-            </p>
-          </div>
-          <!-- 이용 기간 -->
-          <div class="flex flex-col">
-            <p class="text-gray-700 font-medium">이용 기간:</p>
-            <p class="text-gray-900 font-bold" th:text="${usagePeriod}">
-              YYYY/MM/DD
-            </p>
-          </div>
           <!-- 참여 비용 -->
           <div class="flex flex-col">
             <p class="text-gray-700 font-medium">참여 비용:</p>
-            <p class="text-gray-900 font-bold" th:text="${cost}">9,000원</p>
+            <p class="text-gray-900 font-bold" th:text="${party.cost}">0원</p>
           </div>
-          <!-- 종료일 -->
+          <!-- 모집 마감일 -->
           <div class="flex flex-col">
-            <p class="text-gray-700 font-medium">종료일:</p>
-            <p class="text-gray-900 font-bold" th:text="${endDate}">
+            <p class="text-gray-700 font-medium">모집 마감일:</p>
+            <p class="text-gray-900 font-bold" th:text="${party.deadline}">
               YYYY/MM/DD
             </p>
           </div>
@@ -68,8 +54,28 @@
           <div class="flex flex-col">
             <p class="text-gray-700 font-medium">모집 인원:</p>
             <p class="text-gray-900 font-bold">
-              <span th:text="${currentMembers}">3</span> /
-              <span th:text="${maxMembers}">4</span> 명
+              <span th:text="${party.maxMembers}">0</span> 명
+            </p>
+          </div>
+          <!-- 오픈채팅 링크 -->
+          <div class="flex flex-col">
+            <p class="text-gray-700 font-medium">오픈채팅 링크:</p>
+            <a
+              class="text-blue-600 underline"
+              th:href="${party.chatLink}"
+              th:text="${party.chatLink}"
+            >
+              오픈채팅
+            </a>
+          </div>
+          <!-- 파티장 -->
+          <div class="flex flex-col">
+            <p class="text-gray-700 font-medium">파티장:</p>
+            <p
+              class="text-gray-900 font-bold"
+              th:text="${party.creator != null ? party.creator.name : '알 수 없음'}"
+            >
+              파티장
             </p>
           </div>
         </div>
@@ -78,9 +84,7 @@
       <!-- 상세 설명 -->
       <section class="bg-white rounded-lg shadow-md p-6 w-full max-w-3xl mt-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-4">상세 설명</h2>
-        <p class="text-gray-700" th:text="${description}">
-          넷플릭스 4인 구합니다~ 함께 OTT 서비스를 저렴하게 이용해봐요~
-        </p>
+        <p class="text-gray-700" th:text="${party.title}">상세 설명</p>
       </section>
 
       <!-- 참여하기 및 뒤로가기 버튼 -->
@@ -88,7 +92,7 @@
         <!-- 뒤로가기 버튼 -->
         <button
           class="px-6 py-3 bg-gray-300 text-gray-700 text-lg font-medium rounded-lg hover:bg-gray-400 transition"
-          th:onclick="|location.href='@{/index}'|"
+          th:onclick="|location.href='@{/party/main-games}'|"
           aria-label="뒤로가기"
         >
           뒤로가기

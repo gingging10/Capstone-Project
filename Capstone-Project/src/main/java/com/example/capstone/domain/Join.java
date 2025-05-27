@@ -1,11 +1,16 @@
 package com.example.capstone.domain;
+
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Table(name = "joining")
 @IdClass(JoinId.class)
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Join {
     @Id
     private Long partyId;

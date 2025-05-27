@@ -16,5 +16,5 @@ public class LoginController {
     public String loginSuccess() {
         return "party/index"; // 로그인 성공 후 메인 홈페이지로 이동
     }
-    
+
 }

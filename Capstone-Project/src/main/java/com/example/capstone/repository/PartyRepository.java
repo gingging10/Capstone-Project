@@ -1,4 +1,5 @@
 package com.example.capstone.repository;
+
 import com.example.capstone.domain.Party;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -3,7 +3,8 @@ package com.example.capstone.dto;
 import lombok.*;
 import java.time.LocalDate;
 
-@Getter @Setter
+@Getter
+@Setter
 
 public class PartyCreateRequest {
     private String title;

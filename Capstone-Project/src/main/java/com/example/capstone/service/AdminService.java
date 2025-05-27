@@ -32,8 +32,8 @@ public class AdminService {
         Admin admin = adminRepository.findById(id).orElse(null);
 
         if (admin != null &&
-            pw.equals(admin.getAd_pw()) &&  // 평문 비교
-            admin.getAd_status() == AdminStatus.NORMAL) {
+                pw.equals(admin.getAd_pw()) && // 평문 비교
+                admin.getAd_status() == AdminStatus.NORMAL) {
 
             System.out.println("[로그인 인증 성공] ID: " + id);
             return new AdminResponseDto(admin);
@@ -54,7 +54,7 @@ public class AdminService {
     public void deactivateMembers(List<String> memberIds) {
         List<Member> members = memberRepository.findAllById(memberIds);
         for (Member member : members) {
-            member.setStatus(MemberStatus.SUSPENDED);  // 정지로 변경
+            member.setStatus(MemberStatus.SUSPENDED); // 정지로 변경
         }
         memberRepository.saveAll(members); // 일괄 저장
     }

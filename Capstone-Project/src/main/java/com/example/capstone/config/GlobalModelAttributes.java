@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Map;
 
 @ControllerAdvice
 public class GlobalModelAttributes {
@@ -15,9 +16,14 @@ public class GlobalModelAttributes {
         model.addAttribute("customerServicePhone", "1234-5678");
         model.addAttribute("customerServiceKakao", "카카오 문의");
 
-        // ✅ 중복 제거
         model.addAttribute("companyInfo", List.of("회사소개", "인재채용", "광고제휴문의"));
-        model.addAttribute("services", List.of("스포츠", "배달", "공구", "게임", "OTT"));
+        // services를 Map 리스트로 변경
+        model.addAttribute("services", List.of(
+                Map.of("name", "스포츠", "slug", "sports"),
+                Map.of("name", "배달", "slug", "delivery"),
+                Map.of("name", "공구", "slug", "groupbuy"),
+                Map.of("name", "게임", "slug", "games"),
+                Map.of("name", "OTT", "slug", "OTT")));
         model.addAttribute("faqs", List.of("자주묻는질문", "공지사항"));
 
         model.addAttribute("footerInfo1", "(주)test | 주소 : 강원특별자치도 춘천시 효자동 192-1 | 대표이사 : 김철수 | 사업자등록번호 : 123-45-67890");

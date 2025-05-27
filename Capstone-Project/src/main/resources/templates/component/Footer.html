@@ -5,22 +5,55 @@
       <!-- 고객센터 -->
       <div>
         <p class="text-lg font-bold text-gray-800">고객센터</p>
-        <p class="text-sm text-gray-700 mt-2" th:text="${customerServiceTime}">오전 9시 - 오후 6시 운영</p>
+        <p class="text-sm text-gray-700 mt-2" th:text="${customerServiceTime}">
+          오전 9시 - 오후 6시 운영
+        </p>
         <div class="flex flex-col gap-4 mt-4">
           <!-- 전화 아이콘 -->
-          <div class="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm12-12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          <div
+            class="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm12-12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+              />
             </svg>
-            <p class="text-sm font-medium text-gray-800" th:text="${customerServicePhone}">1234-5678</p>
+            <p
+              class="text-sm font-medium text-gray-800"
+              th:text="${customerServicePhone}"
+            >
+              1234-5678
+            </p>
           </div>
           <!-- 카카오톡 아이콘 -->
-          <div class="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 3C6.477 3 2 6.686 2 11.016c0 2.385 1.29 4.504 3.37 5.963-.11.797-.601 2.19-1.03 3.294-.16.41.149.41.32.374.14-.03 2.23-.31 4.12-1.44.97.27 2.01.42 3.22.42 5.523 0 10-3.686 10-8.016C22 6.686 17.523 3 12 3z" />
+          <div
+            class="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 3C6.477 3 2 6.686 2 11.016c0 2.385 1.29 4.504 3.37 5.963-.11.797-.601 2.19-1.03 3.294-.16.41.149.41.32.374.14-.03 2.23-.31 4.12-1.44.97.27 2.01.42 3.22.42 5.523 0 10-3.686 10-8.016C22 6.686 17.523 3 12 3z"
+              />
             </svg>
-            <p class="text-sm font-medium text-gray-800" th:text="${customerServiceKakao}">카카오 문의</p>
+            <p
+              class="text-sm font-medium text-gray-800"
+              th:text="${customerServiceKakao}"
+            >
+              카카오 문의
+            </p>
           </div>
         </div>
       </div>
@@ -28,7 +61,13 @@
       <div>
         <p class="text-lg font-bold text-gray-800">회사</p>
         <ul class="mt-4 space-y-2">
-          <li class="text-sm text-gray-700" th:each="info : ${companyInfo}" th:text="${info}">회사소개</li>
+          <li
+            class="text-sm text-gray-700"
+            th:each="info : ${companyInfo}"
+            th:text="${info}"
+          >
+            회사소개
+          </li>
         </ul>
       </div>
       <!-- 서비스 -->
@@ -36,7 +75,12 @@
         <p class="text-lg font-bold text-gray-800">서비스</p>
         <ul class="mt-4 space-y-2">
           <li th:each="service : ${services}">
-            <a th:href="@{'/parties/create-' + ${service.toLowerCase()}}" class="text-sm text-gray-700 hover:text-blue-500 transition" th:text="${service}">서비스명</a>
+            <a
+              th:href="@{'/party/main-' + ${service.slug}}"
+              class="text-sm text-gray-700 hover:text-blue-500 transition"
+              th:text="${service.name}"
+              >서비스명</a
+            >
           </li>
         </ul>
       </div>
@@ -44,7 +88,13 @@
       <div>
         <p class="text-lg font-bold text-gray-800">문의사항</p>
         <ul class="mt-4 space-y-2">
-          <li class="text-sm text-gray-700" th:each="faq : ${faqs}" th:text="${faq}">자주묻는질문</li>
+          <li
+            class="text-sm text-gray-700"
+            th:each="faq : ${faqs}"
+            th:text="${faq}"
+          >
+            자주묻는질문
+          </li>
         </ul>
       </div>
     </div>
@@ -56,10 +106,26 @@
     <p th:text="${footerInfo3}"></p>
     <!-- 링크 -->
     <div class="flex justify-center items-center gap-4 mt-4">
-      <a th:href="@{${termsLink}}" class="text-sm font-medium text-gray-700 hover:text-gray-900">이용약관</a>
-      <a th:href="@{${privacyPolicyLink}}" class="text-sm font-medium text-gray-700 hover:text-gray-900">개인정보처리방침</a>
-      <a th:href="@{${consumerPolicyLink}}" class="text-sm font-medium text-gray-700 hover:text-gray-900">소비자 분쟁해결 기준</a>
-      <a th:href="@{${contentPolicyLink}}" class="text-sm font-medium text-gray-700 hover:text-gray-900">콘텐츠산업진흥법에 의한 표시</a>
+      <a
+        th:href="@{${termsLink}}"
+        class="text-sm font-medium text-gray-700 hover:text-gray-900"
+        >이용약관</a
+      >
+      <a
+        th:href="@{${privacyPolicyLink}}"
+        class="text-sm font-medium text-gray-700 hover:text-gray-900"
+        >개인정보처리방침</a
+      >
+      <a
+        th:href="@{${consumerPolicyLink}}"
+        class="text-sm font-medium text-gray-700 hover:text-gray-900"
+        >소비자 분쟁해결 기준</a
+      >
+      <a
+        th:href="@{${contentPolicyLink}}"
+        class="text-sm font-medium text-gray-700 hover:text-gray-900"
+        >콘텐츠산업진흥법에 의한 표시</a
+      >
     </div>
     <p class="mt-4" th:text="${copyright}"></p>
   </div>

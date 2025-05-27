@@ -37,7 +37,7 @@ public class ReportService {
         long count = reportRepository.countByTargetId(target.getId());
 
         if (count >= 3 && target.getStatus() != MemberStatus.SUSPENDED) {
-            target.setStatus(MemberStatus.SUSPENDED);  // 정지 상태로 변경
+            target.setStatus(MemberStatus.SUSPENDED); // 정지 상태로 변경
             memberRepository.save(target);
         }
     }

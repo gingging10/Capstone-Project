@@ -1,29 +1,28 @@
 <div th:fragment="header" class="w-full bg-white shadow-md">
   <!-- 헤더 내용 -->
-  <div class="max-w-[1440px] mx-auto flex items-center justify-between h-16 px-6">
+  <div
+    class="max-w-[1440px] mx-auto flex items-center justify-between h-16 px-6"
+  >
     <!-- 로고 -->
     <div class="flex items-center">
-      <a th:href="@{/party}" aria-label="홈으로 이동" class="text-2xl font-bold text-black uppercase tracking-wide">
+      <a
+        th:href="@{/main}"
+        aria-label="홈으로 이동"
+        class="text-2xl font-bold text-black uppercase tracking-wide"
+      >
         나랑 어때
       </a>
     </div>
 
     <!-- 서비스 목록 -->
     <nav class="hidden md:flex gap-20" role="navigation" aria-label="메인 메뉴">
-      <a href="/parties/create-sports" class="text-base text-gray-700 hover:text-blue-500 transition py-2 px-3 rounded-md">
-        스포츠
-      </a>
-      <a href="/parties/create-delivery" class="text-base text-gray-700 hover:text-blue-500 transition py-2 px-3 rounded-md">
-        배달
-      </a>
-      <a href="/parties/create-groupbuy" class="text-base text-gray-700 hover:text-blue-500 transition py-2 px-3 rounded-md">
-        공구
-      </a>
-      <a href="/parties/create-games" class="text-base text-gray-700 hover:text-blue-500 transition py-2 px-3 rounded-md">
-        게임
-      </a>
-      <a href="/parties/create-ott" class="text-base text-gray-700 hover:text-blue-500 transition py-2 px-3 rounded-md">
-        OTT
+      <a
+        th:each="service : ${services}"
+        th:href="@{'/party/main-' + ${service['slug']}}"
+        class="text-base text-gray-700 hover:text-blue-500 transition py-2 px-3 rounded-md"
+        th:text="${service['name']}"
+      >
+        서비스명
       </a>
     </nav>
 
@@ -44,7 +43,7 @@
       <a
         href="#"
         class="px-4 py-2 border border-gray-300 bg-gray-100 text-gray-600 rounded-full cursor-default"
-        style="pointer-events: none;"
+        style="pointer-events: none"
         th:if="${#authentication != null and #authentication.principal != null and #authentication.principal != 'anonymousUser'}"
         aria-label="로그인 사용자"
       >

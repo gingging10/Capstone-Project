@@ -16,7 +16,8 @@ public interface JoinRepository extends JpaRepository<Join, JoinId> {
 
     // 페이징 지원: 참여중인 파티 목록 일부만 가져오기
     @Query("SELECT j FROM Join j WHERE j.memberId = :memberId ORDER BY j.id.partyId DESC")
-    List<Join> findAllByMemberIdWithPaging(@Param("memberId") String memberId, org.springframework.data.domain.Pageable pageable);
+    List<Join> findAllByMemberIdWithPaging(@Param("memberId") String memberId,
+            org.springframework.data.domain.Pageable pageable);
 
     // 참여중인 파티 개수
     @Query("SELECT COUNT(j) FROM Join j WHERE j.memberId = :memberId")

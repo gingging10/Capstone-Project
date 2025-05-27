@@ -1,9 +1,9 @@
 package com.example.capstone.dto;
 
-
 import lombok.*;
 
-@Getter @Setter
+@Getter
+@Setter
 
 public class JoinRequest {
     private Long partyId;

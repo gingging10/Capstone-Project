@@ -5,7 +5,9 @@ import lombok.*;
 
 import java.util.List;
 
-@Getter @Setter @Builder
+@Getter
+@Setter
+@Builder
 public class MyPageResponse {
     private String id;
     private String name;

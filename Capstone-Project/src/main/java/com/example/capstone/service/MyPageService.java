@@ -17,53 +17,55 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class MyPageService {
 
-    private final MemberRepository memberRepository;
-    private final JoinRepository joinRepository;
+        private final MemberRepository memberRepository;
+        private final JoinRepository joinRepository;
 
-    public MyPageResponse getMyPage(String memberId) {
-        Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new RuntimeException("회원 정보를 찾을 수 없습니다."));
+        public MyPageResponse getMyPage(String memberId) {
+                Member member = memberRepository.findById(memberId)
+                                .orElseThrow(() -> new RuntimeException("회원 정보를 찾을 수 없습니다."));
 
-        List<Join> joins = joinRepository.findAllByMemberId(memberId);
-        List<Party> joinedParties = joins.stream()
-                .map(Join::getParty)
-                .toList();
+                List<Join> joins = joinRepository.findAllByMemberId(memberId);
+                List<Party> joinedParties = joins.stream()
+                                .map(Join::getParty)
+                                .toList();
 
-        return MyPageResponse.builder()
-                .id(member.getId())
-                .name(member.getName())
-                .schoolCode(member.getSchoolCode())
-                .schoolDepartment(member.getSchoolDepartment())
-                .phoneNum(member.getPhoneNum())
-                .joinedParties(joinedParties)
-                .build();
-    }
+                return MyPageResponse.builder()
+                                .id(member.getId())
+                                .name(member.getName())
+                                .schoolCode(member.getSchoolCode())
+                                .schoolDepartment(member.getSchoolDepartment())
+                                .phoneNum(member.getPhoneNum())
+                                .joinedParties(joinedParties)
+                                .build();
+        }
 
-    public void updateMyPage(MyPageResponse myPage) {
-        Member member = memberRepository.findById(myPage.getId())
-                .orElseThrow(() -> new RuntimeException("회원 정보를 찾을 수 없습니다."));
-        member.setName(myPage.getName());
-        member.setPhoneNum(myPage.getPhoneNum());
-        member.setSchoolCode(myPage.getSchoolCode());
-        member.setSchoolDepartment(myPage.getSchoolDepartment());
-        memberRepository.save(member);
-    }
+        public void updateMyPage(MyPageResponse myPage) {
+                Member member = memberRepository.findById(myPage.getId())
+                                .orElseThrow(() -> new RuntimeException("회원 정보를 찾을 수 없습니다."));
+                member.setName(myPage.getName());
+                member.setPhoneNum(myPage.getPhoneNum());
+                member.setSchoolCode(myPage.getSchoolCode());
+                member.setSchoolDepartment(myPage.getSchoolDepartment());
+                memberRepository.save(member);
+        }
 
-    // 참여중인 파티 페이징 (PartyListDto로 변환)
-    public List<PartyListDto> getMyParties(String memberId, int page, int pageSize) {
-        Pageable pageable = PageRequest.of(page - 1, pageSize);
-        List<Join> joins = joinRepository.findAllByMemberIdWithPaging(memberId, pageable);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
-        return joins.stream()
-                .map(Join::getParty)
-                .map(party -> PartyListDto.builder()
-                        .title(party.getTitle())
-                        .deadline(party.getDeadline() != null ? party.getDeadline().format(formatter) : "")
-                        .build())
-                .collect(Collectors.toList());
-    }
+        // 참여중인 파티 페이징 (PartyListDto로 변환)
+        public List<PartyListDto> getMyParties(String memberId, int page, int pageSize) {
+                Pageable pageable = PageRequest.of(page - 1, pageSize);
+                List<Join> joins = joinRepository.findAllByMemberIdWithPaging(memberId, pageable);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+                return joins.stream()
+                                .map(Join::getParty)
+                                .map(party -> PartyListDto.builder()
+                                                .title(party.getTitle())
+                                                .deadline(party.getDeadline() != null
+                                                                ? party.getDeadline().format(formatter)
+                                                                : "")
+                                                .build())
+                                .collect(Collectors.toList());
+        }
 
-    public int getMyPartiesCount(String memberId) {
-        return joinRepository.countByMemberId(memberId);
-    }
+        public int getMyPartiesCount(String memberId) {
+                return joinRepository.countByMemberId(memberId);
+        }
 }

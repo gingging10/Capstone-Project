@@ -13,7 +13,7 @@ import lombok.*;
 public class Member {
 
     @Id
-    private String id;  // 유저 ID (소셜 고유 ID or 학번)
+    private String id; // 유저 ID (소셜 고유 ID or 학번)
 
     @Column(nullable = false) // 이름
     private String name;
@@ -30,8 +30,8 @@ public class Member {
     @Column(nullable = false)
     private String email; // 학교 웹메일
 
-    @Builder.Default  // 기본값
-    @Enumerated(EnumType.ORDINAL)  // (0,1,2)
+    @Builder.Default // 기본값
+    @Enumerated(EnumType.ORDINAL) // (0,1,2)
     @Column(nullable = false)
     private MemberStatus status = MemberStatus.NORMAL;
 }

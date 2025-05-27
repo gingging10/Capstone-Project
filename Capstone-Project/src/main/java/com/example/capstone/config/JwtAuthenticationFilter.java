@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-@Component  // ← 이거 꼭 추가!!
+@Component // ← 이거 꼭 추가!!
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtProvider jwtProvider;
@@ -23,8 +23,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response,
-                                    FilterChain filterChain)
+            HttpServletResponse response,
+            FilterChain filterChain)
             throws ServletException, IOException {
 
         String requestURI = request.getRequestURI();

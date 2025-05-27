@@ -25,8 +25,8 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
-                                        HttpServletResponse response,
-                                        Authentication authentication) throws IOException, ServletException {
+            HttpServletResponse response,
+            Authentication authentication) throws IOException, ServletException {
 
         // OAuth2 인증 성공 → Authentication 객체에서 사용자 정보 추출
         String userId = authentication.getName(); // 기본적으로 사용자명 반환

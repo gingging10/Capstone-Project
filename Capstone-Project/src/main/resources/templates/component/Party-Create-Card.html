@@ -28,31 +28,39 @@
       <!-- 파티명 -->
       <div class="flex justify-between w-full">
         <p class="text-lg font-medium text-gray-700">파티명:</p>
-        <p class="text-lg font-medium text-gray-900" th:text="${partyName}">이성준</p>
+        <p class="text-lg font-medium text-gray-900" th:text="${party.title}">
+          파티명
+        </p>
       </div>
 
       <!-- 모집 인원 -->
       <div class="flex justify-between w-full">
         <p class="text-lg font-medium text-gray-700">모집 인원:</p>
-        <p class="text-lg font-medium text-gray-900" th:text="${recruitmentCount}">0명</p>
+        <p
+          class="text-lg font-medium text-gray-900"
+          th:text="${party.maxMembers}"
+        >
+          0명
+        </p>
       </div>
 
       <!-- 모집 기간 -->
       <div class="flex justify-between w-full">
         <p class="text-lg font-medium text-gray-700">모집 기간:</p>
-        <p class="text-lg font-medium text-gray-900" th:text="${recruitmentPeriod}">25년 4월 16일</p>
-      </div>
-
-      <!-- 메뉴 -->
-      <div class="flex justify-between w-full">
-        <p class="text-lg font-medium text-gray-700">메뉴:</p>
-        <p class="text-lg font-medium text-gray-900" th:text="${menu}">교촌 치킨 허니 콤보</p>
+        <p
+          class="text-lg font-medium text-gray-900"
+          th:text="${party.deadline}"
+        >
+          마감일
+        </p>
       </div>
 
       <!-- 인당 가격 -->
       <div class="flex justify-between w-full">
         <p class="text-lg font-medium text-gray-700">인당 가격:</p>
-        <p class="text-lg font-medium text-gray-900" th:text="${price}">가격</p>
+        <p class="text-lg font-medium text-gray-900" th:text="${party.cost}">
+          가격
+        </p>
       </div>
 
       <!-- 오픈 채팅 -->
@@ -60,7 +68,8 @@
         <p class="text-lg font-medium text-gray-700">오픈 채팅:</p>
         <a
           class="text-lg font-medium text-blue-500 hover:underline"
-          th:href="${openChatLink}"
+          th:href="${party.chatLink}"
+          th:text="${party.chatLink}"
           >링크</a
         >
       </div>

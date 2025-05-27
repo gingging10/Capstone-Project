@@ -17,16 +17,43 @@ public class PartyController {
 
     private final PartyService partyService;
 
-    // 메인 파티 리스트 페이지 렌더링 (index.html과 연결)
-    @GetMapping({"/party", "/party/index"})
+    // 메인 파티 리스트 페이지 렌더링
+    @GetMapping({ "main", "/party/main-sports" })
     public String partyMainPage(Model model) {
-        // 파티 목록을 가져와서 모델에 담아줌 (카테고리: 스포츠 예시)
         List<Party> parties = partyService.getAllParties("스포츠");
         model.addAttribute("parties", parties);
-        return "party/index";
+        return "party/main-sports";
     }
 
-    // 🔹 HTML 렌더링 (파티 생성 폼)
+    @GetMapping({ "/party/main-delivery" })
+    public String mainDeliveryPage(Model model) {
+        List<Party> parties = partyService.getAllParties("배달");
+        model.addAttribute("parties", parties);
+        return "party/main-delivery";
+    }
+
+    @GetMapping({ "/party/main-games" })
+    public String mainGamesPage(Model model) {
+        List<Party> parties = partyService.getAllParties("게임");
+        model.addAttribute("parties", parties);
+        return "party/main-games";
+    }
+
+    @GetMapping({ "/party/main-groupbuy" })
+    public String mainGroupBuyPage(Model model) {
+        List<Party> parties = partyService.getAllParties("공구");
+        model.addAttribute("parties", parties);
+        return "party/main-groupbuy";
+    }
+
+    @GetMapping({ "/party/main-OTT" })
+    public String mainOTTPage(Model model) {
+        List<Party> parties = partyService.getAllParties("OTT");
+        model.addAttribute("parties", parties);
+        return "party/main-OTT";
+    }
+
+    // 파티 생성 폼
     @GetMapping("/parties/create-groupbuy")
     public String showBuyForm() {
         return "Create-Party/Create-Groupbuy";
@@ -52,7 +79,25 @@ public class PartyController {
         return "Create-Party/Create-Sports";
     }
 
-    // 🔹 API: JSON 응답
+    @GetMapping("/party/apply-success")
+    public String showApplySuccessPage() {
+        return "party/party-apply-success";
+    }
+
+    @GetMapping("/party/creation-success")
+    public String showCreationSuccessPage() {
+        return "party/party-creation-success";
+    }
+
+    // 파티 상세페이지 매핑
+    @GetMapping("/party/detail/{id}")
+    public String partyDetailPage(@PathVariable Long id, Model model) {
+        Party party = partyService.getPartyById(id);
+        model.addAttribute("party", party);
+        return "party/party-detail";
+    }
+
+    // JSON 응답
     @PostMapping("/api/parties")
     @ResponseBody
     public ResponseEntity<Party> createParty(@RequestBody PartyCreateRequest request) {

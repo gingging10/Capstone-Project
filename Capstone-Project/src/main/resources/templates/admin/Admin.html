@@ -6,7 +6,8 @@
     <title>Manager Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      html, body {
+      html,
+      body {
         display: flex;
         flex-direction: column;
         flex: 1;
@@ -20,10 +21,13 @@
   </head>
   <body>
     <div class="w-full h-full bg-white relative">
-            <!-- ✅ 로그아웃 버튼 -->
+      <!-- ✅ 로그아웃 버튼 -->
       <div class="absolute top-4 right-6">
         <form method="POST" action="/api/admin/logout">
-          <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow">
+          <button
+            type="submit"
+            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow"
+          >
             로그아웃
           </button>
         </form>
@@ -31,19 +35,37 @@
       <!-- 전체 레이아웃 -->
       <div class="flex w-full h-full">
         <!-- 사이드바 -->
-        <div class="flex flex-col justify-start items-start w-[240px] h-full bg-gray-100 p-4">
+        <div
+          class="flex flex-col justify-start items-start w-[240px] h-full bg-gray-100 p-4"
+        >
           <!-- 타이틀 -->
           <div class="mb-8">
-            <p class="text-2xl font-semibold text-center text-[#1a1c35]">전체 관리</p>
+            <p class="text-2xl font-semibold text-center text-[#1a1c35]">
+              전체 관리
+            </p>
           </div>
           <!-- 메뉴 항목 -->
           <div class="space-y-4">
-            <a href="/api/admin/AdminUserlist" class="flex items-center gap-4 cursor-pointer">
-              <img src="/Capstone-Project/src/main/resources/static/image/Mem-info.png" alt="회원정보" class="w-6 h-6" />
+            <a
+              href="/api/admin/AdminUserlist"
+              class="flex items-center gap-4 cursor-pointer"
+            >
+              <img
+                src="/Capstone-Project/src/main/resources/static/image/Mem-info.png"
+                alt="회원정보"
+                class="w-6 h-6"
+              />
               <p class="text-lg text-[#6a6ba1]">회원정보</p>
             </a>
-            <a href="/api/admin/AdminPartylist" class="flex items-center gap-4 cursor-pointer">
-              <img src="/Capstone-Project/src/main/resources/static/image/Whole-party.png" alt="전체파티방" class="w-6 h-6" />
+            <a
+              href="/api/admin/AdminPartylist"
+              class="flex items-center gap-4 cursor-pointer"
+            >
+              <img
+                src="/Capstone-Project/src/main/resources/static/image/Whole-party.png"
+                alt="전체파티방"
+                class="w-6 h-6"
+              />
               <p class="text-lg text-[#6a6ba1]">전체파티방</p>
             </a>
           </div>
@@ -52,7 +74,9 @@
         <!-- 메인 콘텐츠 -->
         <div class="flex flex-col w-full h-full bg-[#f5f6fb] p-8 rounded-tl-lg">
           <!-- 방문자 요약 -->
-          <div class="flex flex-col items-center bg-[#eaecf8] p-6 rounded-lg shadow-md">
+          <div
+            class="flex flex-col items-center bg-[#eaecf8] p-6 rounded-lg shadow-md"
+          >
             <p class="text-2xl font-semibold text-black mb-6">방문자 요약</p>
             <!-- 방문자 수 -->
             <div class="w-full bg-white p-6 rounded-lg shadow-md">
@@ -69,13 +93,27 @@
                 </div>
                 <div class="relative w-full h-[150px] bg-gray-200 rounded-lg">
                   <!-- 그래프 바 -->
-                  <div class="absolute bottom-0 left-[10%] w-4 h-[80%] bg-blue-500 rounded"></div>
-                  <div class="absolute bottom-0 left-[20%] w-4 h-[60%] bg-teal-500 rounded"></div>
-                  <div class="absolute bottom-0 left-[30%] w-4 h-[90%] bg-blue-500 rounded"></div>
-                  <div class="absolute bottom-0 left-[40%] w-4 h-[40%] bg-teal-500 rounded"></div>
-                  <div class="absolute bottom-0 left-[50%] w-4 h-[70%] bg-blue-500 rounded"></div>
-                  <div class="absolute bottom-0 left-[60%] w-4 h-[50%] bg-teal-500 rounded"></div>
-                  <div class="absolute bottom-0 left-[70%] w-4 h-[100%] bg-blue-500 rounded"></div>
+                  <div
+                    class="absolute bottom-0 left-[10%] w-4 h-[80%] bg-blue-500 rounded"
+                  ></div>
+                  <div
+                    class="absolute bottom-0 left-[20%] w-4 h-[60%] bg-teal-500 rounded"
+                  ></div>
+                  <div
+                    class="absolute bottom-0 left-[30%] w-4 h-[90%] bg-blue-500 rounded"
+                  ></div>
+                  <div
+                    class="absolute bottom-0 left-[40%] w-4 h-[40%] bg-teal-500 rounded"
+                  ></div>
+                  <div
+                    class="absolute bottom-0 left-[50%] w-4 h-[70%] bg-blue-500 rounded"
+                  ></div>
+                  <div
+                    class="absolute bottom-0 left-[60%] w-4 h-[50%] bg-teal-500 rounded"
+                  ></div>
+                  <div
+                    class="absolute bottom-0 left-[70%] w-4 h-[100%] bg-blue-500 rounded"
+                  ></div>
                 </div>
                 <div class="flex justify-between text-sm text-[#718ebf] mt-2">
                   <p>Sat</p>
