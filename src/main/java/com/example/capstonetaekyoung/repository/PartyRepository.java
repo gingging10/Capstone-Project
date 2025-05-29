@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface PartyRepository extends JpaRepository<Party, Long> {
     List<Party> findByCategory(String category);
+
+    List<Party> searchParties(String category, String keyword);
 }

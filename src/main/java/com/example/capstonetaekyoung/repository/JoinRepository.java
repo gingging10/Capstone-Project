@@ -10,5 +10,5 @@ public interface JoinRepository extends JpaRepository<Join, JoinId> {
 
     boolean existsByPartyIdAndMemberId(Long partyId, String memberId);
 
-    List<Join> findAllByMemberId(String memberId); // 🔥 오류나는 부분 이렇게 수정
+    List<Join> findAllByMemberId(String memberId);
 }

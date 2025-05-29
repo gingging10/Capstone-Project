@@ -54,4 +54,10 @@ public class Member {
 
     public Integer getStatus() { return status; }
     public void setStatus(Integer status) { this.status = status; }
+
+    public String getPassword() {
+    }
+
+    public String getEmail() {
+    }
 }

@@ -2,6 +2,7 @@ package com.example.capstonetaekyoung.service;
 
 import com.example.capstonetaekyoung.domain.*;
 import com.example.capstonetaekyoung.dto.MyPageResponse;
+import com.example.capstonetaekyoung.dto.MyPageUpdateRequest;
 import com.example.capstonetaekyoung.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,8 @@ public class MyPageService {
                 .phoneNum(member.getPhoneNum())
                 .joinedParties(joinedParties)
                 .build();
+    }
+
+    public void updateMyPage(String id, MyPageUpdateRequest request) {
     }
 }

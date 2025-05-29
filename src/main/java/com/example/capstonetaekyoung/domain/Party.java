@@ -3,6 +3,7 @@ package com.example.capstonetaekyoung.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "party")
@@ -33,4 +34,16 @@ public class Party {
     @ManyToOne
     @JoinColumn(name = "creator_id")
     private Member creator;
+
+    public boolean canJoin() {
+    }
+
+    public Arrays getParticipants() {
+    }
+
+    public void setClosed(boolean b) {
+    }
+
+    public boolean isClosed() {
+    }
 }
